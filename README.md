@@ -1,10 +1,15 @@
 # Programación en Python
-
 En el marco del proyecto de [Inteligencia Artificial Interdisciplinaria](http://noticias.unsam.edu.ar/2019/09/16/la-unsam-piensa-la-inteligencia-artificial-interdisciplinaria/), 
 la [Escuela de Ciencia y Tecnología](http://www.unsam.edu.ar/escuelas/ciencia/) de la [UNSAM](https://www.unsam.edu.ar/) vuelve a dictar 
 en 2021 el curso de programación en Python.
 
+
+## Ejercicios
+**[Ver todos los ejercicios](Notas/Ejercicios)**
+
+
 ![image info](./Python_cloud.jpg)
+
 
 ## ¿De qué es el curso?
 Este es un curso cuatrimestral de algoritmos y programación en Python.
@@ -32,6 +37,7 @@ Es un curso intenso y desafiante, que invita a pensar y a desarrollar algoritmos
 El objetivo de este curso es enseñar los fundamentos del lenguaje
 Python y algunos conceptos del diseño de algoritmos. El curso está orientado al manejo de datos, a la escritura de scripts y a una organización adecuada de los programas. Estudiaremos un poco de teoría de algoritmos, incluyendo conceptos básicos de la teoría de la complejidad y algunas estructuras de datos no triviales. Introduciremos la programación orientada a objetos. Al final de este curso les estudiantes deberían poder escribir sus propios programas en Python así como entender y modificar programas escritos por otres.
 
+
 ## Requerimientos
 Para hacer este curso solo hace falta tener instalado el Python 3.6
 (o uno más nuevo), comprometerse a leer las clases y a hacer los 
@@ -39,6 +45,7 @@ ejercicios de las guías semanales, lo que demandará alrededor de 15 horas de
 dedicación semanal (en algunos casos menos, en algunos casos más, dependiendo del estudiante). 
 Pedimos tener alguna experiencia previa programando,
 aunque sea poca. Este no es un curso de introducción a la informática.
+
 
 ## Dedicación y duración
 Este es un curso cuatrimestral de grado y posgrado. Las clases 
@@ -50,11 +57,13 @@ también un grupo de [Slack](https://slack.com/intl/es-ar/) (mensajería on-line
 estudiantes en tiempo real. El curso demanda unas quince 
 horas semanales de dedicación, durante cuatro meses.
 
+
 ## Docentes
 El curso está a cargo de dos profesores de la ECyT-UNSAM que son también 
 investigadores del CONICET: [Oscar Filevich](http://labning.com.ar/#nosotros) es Lic. en Biología, 
 Dr. en Química y trabaja en neurofisiología; [Rafael Grimson](http://investigadores.unsam.edu.ar/es/investigador/407/Grimson-Rafael) es Lic. en Matemática, 
 Dr. en Computación y trabaja en temas ambientales. También contamos con Manuela Cerdiero como JTP e Iván Pedrón y Daniela Alban como ayudantes. Además,  [Matias López-Rosenfeld](https://futuros-estudiantes.dc.uba.ar/un-profesor-del-departamento-de-computacion-distinguido-por-facebook/) es profesor invitado, y José Crespo y José Clemente, docentes invitados. 
+
 
 ## Preinscripción
 La preinscripción al curso ya cerró.- 
