@@ -30,10 +30,12 @@ def hipoteca(saldo, tasa, mensual):
     4 10736.44 497581.83
     5 13420.55 496970.98
     ...
+    306 869337.66 8784.87
+    307 872021.77 6137.36
     308 874705.88 3478.83
     309 877389.99  809.21
-    310 880074.10    0.00
-    'Total pagado: $880074.10'
+    310 878202.57    0.00
+    'Total pagado: $878202.57'
     'Meses pagados: 310'
     'Pagos realizados: 310'
     'Meses adelantados: 48'
@@ -51,17 +53,20 @@ def hipoteca(saldo, tasa, mensual):
   while (saldo > 0):
     meses_pagados += 1
     pagos_realizados += 1
+    # >>> correccion de saldo ...
+    a_pagar = 0
     if (meses_pagados >= pago_extra_mes_comienzo and 
         meses_pagados <= pago_extra_mes_fin):
       pago_mensual_especial = adelanto + mensual
-      saldo = saldo * (1 + tasa / 12) - pago_mensual_especial
-      total_pagado += pago_mensual_especial
+      a_pagar = pago_mensual_especial
       meses_adelantados += 1
     else:
-      saldo = saldo * (1 + tasa / 12) - mensual
-      total_pagado += mensual
-    if (saldo < 0):
-      saldo = 0
+      a_pagar = mensual
+    if (saldo * (1 + tasa / 12) < a_pagar):
+      a_pagar = saldo * (1 + tasa / 12)
+    saldo = saldo * (1 + tasa / 12) - a_pagar
+    total_pagado += a_pagar
+    # ... copiada de la clase de consulta <<<
     print(f'{meses_pagados:10d}' + 
           f'{round(total_pagado, 4):10.2f}' +
           f'{round(saldo, 4):10.2f}')
