@@ -35,7 +35,7 @@ Los programas reales tienen datos más complejos que los que podemos almacenar e
 
 Podemos ver esto como un "objeto" con tres partes:
 
-* Nombre del símbolo ("Manzanas", una cadena)
+* Nombre de la mercancía ("Manzanas", una cadena)
 * Número o cantidad (100, un entero)
 * Precio (490.10, un flotante)
 
@@ -58,7 +58,7 @@ Los contenidos de una tupla están ordenados (como en una lista).
 s = ('Manzana', 100, 490.1)
 nombre = s[0]                   # 'Manzana'
 cantidad = s[1]                 # 100
-precio = s[2]                    # 490.1
+precio = s[2]                   # 490.1
 ```
 
 El contenido de las tuplas no puede ser modificado.
