@@ -86,14 +86,12 @@ def leer_precios(nombre_archivo):
     return 'No existe el archivo o carpeta'
 
 #%% funcion hacer_informe(camion, precios)
-def hacer_informe(camion, precios):
+def hacer_informe(camion = [], precios = {}):
   """Generar un informe.
 
   Parametros:
-    `camion` (list): lista de diccionarios con datos de la carga
-    de un camion.
-    `precios` (dict): diccionario con datos como el producto y su 
-    precio.
+    `camion` (list): carga de un camion con el precio de costo.
+    `precios` (dict): precio de venta de la carga del camion.
 
   Ejemplo:
     >>> from pprint import pprint
@@ -133,8 +131,8 @@ def tabla_con_formato(informe = []):
   separador = f'{sep:->10s} {sep:->10s} {sep:->10s} {sep:->10s}'
   print(encabezado)
   print(separador)
-  for r in informe:
-    print('%10s %10d %10.2f %10.2f' % r)
+  for nombre, cajones, precio, cambio in informe:
+    print(f'{nombre:>10s} {cajones:>10d} {precio:>10.2f} {cambio:>10.2f}')
 
 #%% archivos csv
 nombre_archivo_camion = '../Data/camion.csv'

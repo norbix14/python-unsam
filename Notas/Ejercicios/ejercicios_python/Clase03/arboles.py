@@ -314,23 +314,25 @@ def testear_todo():
     inclinaciones = obtener_inclinaciones(lista_arboles, 'Jacarandá')
     print(f'Inclinaciones de <Jacarandá> en <{parque}>')
     pprint(inclinaciones)
+    #%% 3.23 y 3.24 - Inclinaciones
+    lista_inclinaciones = [
+      (obtener_inclinaciones(lista_arboles, especie), especie)
+      for especie in especies_unicas
+    ]
     # 3.23 - Especie con el ejemplar mas inclinado
-    lista_inclinaciones = []
-    for especie in especies_unicas:
-      max_inc = max(obtener_inclinaciones(lista_arboles, especie))
-      inclinacion_especie = (max_inc, especie)
-      lista_inclinaciones.append(inclinacion_especie)
-    emi = especimen_mas_inclinado(lista_inclinaciones)
+    listado_emi = [
+      (max(inclinaciones), especie)
+      for inclinaciones, especie in lista_inclinaciones
+    ]
+    emi = especimen_mas_inclinado(listado_emi)
     print(f'Ejemplar mas inclinado en <{parque}>')
     pprint(emi)
     # 3.24 - Especie mas inclinada en promedio
-    lista_inclinaciones = []
-    for especie in especies_unicas:
-      inclinaciones = obtener_inclinaciones(lista_arboles, especie)
-      promedio = sum(inclinaciones) / len(inclinaciones)
-      inclinacion_promedio_especie = (promedio, especie)
-      lista_inclinaciones.append(inclinacion_promedio_especie)
-    epmi = especie_promedio_mas_inclinada(lista_inclinaciones)
+    listado_epmi = [
+      (sum(inclinaciones) / len(inclinaciones), especie)
+      for inclinaciones, especie in lista_inclinaciones
+    ]
+    epmi = especie_promedio_mas_inclinada(listado_epmi)
     print(f'Ejemplar que en promedio tiene mayor inclinacion en <{parque}>')
     pprint(epmi)
     print('\n')
