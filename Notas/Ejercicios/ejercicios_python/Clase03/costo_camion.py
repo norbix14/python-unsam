@@ -39,11 +39,13 @@ def costo_camion(nombre_archivo):
   except FileNotFoundError:
     return 'No existe el archivo o carpeta'
 
-#%% archivo csv
-nombre_archivo = '../Data/camion.csv'
+#%% 
+if __name__ == '__main__':
+  #%% archivo csv
+  nombre_archivo = '../Data/camion.csv'
 
-#%% calcular costo
-costo = costo_camion(nombre_archivo)
+  #%% calcular costo
+  costo = costo_camion(nombre_archivo)
 
-#%% ver costo
-print(costo)
+  #%% ver costo
+  print(costo)

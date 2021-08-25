@@ -29,4 +29,5 @@ def tablamult():
     print('\n')
 
 #%% ver tabla de multiplicar
-tablamult()
+if __name__ == '__main__':
+  tablamult()

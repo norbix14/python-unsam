@@ -165,21 +165,23 @@ def leer_camion(nombre_archivo):
       camion.append(registro)
   return camion
 
-#%% 3.2 - testear tiene_a()
-print('Tiene letra a:', tiene_a('UNSAM 2020'))
-print('Tiene letra a:', tiene_a('abracadabra'))
-print('Tiene letra a:', tiene_a('La novela 1984 de George Orwell'))
+#%% 
+if __name__ == '__main__':
+  #%% 3.2 - testear tiene_a()
+  print('Tiene letra a:', tiene_a('UNSAM 2020'))
+  print('Tiene letra a:', tiene_a('abracadabra'))
+  print('Tiene letra a:', tiene_a('La novela 1984 de George Orwell'))
 
-#%% 3.3 - testear tiene_uno()
-print('Tiene a 1:', tiene_uno('UNSAM 2020'))
-print('Tiene a 1:', tiene_uno('La novela 1984 de George Orwell'))
-print('Tiene a 1:', tiene_uno(1984))
+  #%% 3.3 - testear tiene_uno()
+  print('Tiene a 1:', tiene_uno('UNSAM 2020'))
+  print('Tiene a 1:', tiene_uno('La novela 1984 de George Orwell'))
+  print('Tiene a 1:', tiene_uno(1984))
 
-#%% 3.4 - testear suma()
-a, b = 2, 3
-c = suma(a, b)
-print(f'Suma de {a} + {b} = {c}')
+  #%% 3.4 - testear suma()
+  a, b = 2, 3
+  c = suma(a, b)
+  print(f'Suma de {a} + {b} = {c}')
 
-#%% 3.5 - testear leer_camion()
-camion = leer_camion('../Data/camion.csv')
-pprint(camion)
+  #%% 3.5 - testear leer_camion()
+  camion = leer_camion('../Data/camion.csv')
+  pprint(camion)

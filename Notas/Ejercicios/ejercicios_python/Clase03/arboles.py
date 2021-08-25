@@ -337,5 +337,7 @@ def testear_todo():
     pprint(epmi)
     print('\n')
 
-#%% ejecutar test
-testear_todo()
+#%% 
+if __name__ == '__main__':
+  #%% ejecutar test
+  testear_todo()

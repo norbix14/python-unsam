@@ -143,5 +143,6 @@ def informe():
   except FileNotFoundError:
     return 'No existe el archivo o carpeta'
 
-#%%
-informe()
+#%% 
+if __name__ == '__main__':
+  informe()

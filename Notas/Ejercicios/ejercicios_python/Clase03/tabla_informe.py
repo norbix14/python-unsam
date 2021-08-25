@@ -134,16 +134,18 @@ def tabla_con_formato(informe = []):
   for nombre, cajones, precio, cambio in informe:
     print(f'{nombre:>10s} {cajones:>10d} {precio:>10.2f} {cambio:>10.2f}')
 
-#%% archivos csv
-nombre_archivo_camion = '../Data/camion.csv'
-nombre_archivo_precios = '../Data/precios.csv'
+#%% 
+if __name__ == '__main__':
+  #%% archivos csv
+  nombre_archivo_camion = '../Data/camion.csv'
+  nombre_archivo_precios = '../Data/precios.csv'
 
-#%% leer archivos
-camion = leer_camion(nombre_archivo_camion)
-precios = leer_precios(nombre_archivo_precios)
+  #%% leer archivos
+  camion = leer_camion(nombre_archivo_camion)
+  precios = leer_precios(nombre_archivo_precios)
 
-#%% hacer el informe
-informe = hacer_informe(camion, precios)
+  #%% hacer el informe
+  informe = hacer_informe(camion, precios)
 
-#%% mostrar tabla bien formateada con el informe
-tabla_con_formato(informe)
+  #%% mostrar tabla bien formateada con el informe
+  tabla_con_formato(informe)
