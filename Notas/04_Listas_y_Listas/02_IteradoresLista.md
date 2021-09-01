@@ -191,7 +191,7 @@ Probá tu función con algunos ejemplos:
 
 Agregale a tu programa `busqueda_en_listas.py` una función `buscar_n_elemento()` que reciba una lista y un elemento y devuelva la cantidad de veces que aparece el elemento en la lista. Probá también esta función con algunos ejemplos.
 
-Ayuda: si querés podés ver este [video](https://youtu.be/idzQ5ts77zE) donde hablamos de este ejercicio.
+Ayuda: si querés podés ver este [video](https://youtu.be/idzQ5ts77zE) donde hablamos de este ejercicio. Te dejamos también el [código](./buscar_elem.py) que usamos en el video.
 
 ### Ejercicio 4.4: Búsqueda de máximo y mínimo
 Agregale a tu archivo `busqueda_en_listas.py` una función `maximo()` que busque el valor máximo de una lista de números positivos. Python tiene el comando `max` que ya hace esto, pero como práctica te proponemos que completes el siguiente código:

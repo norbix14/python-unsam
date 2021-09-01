@@ -1,10 +1,12 @@
-# 5.3 El album de Figuritas
+# 5.4 El album de Figuritas
 
 ## Las figuritas del mundial
 
 Esta es una adaptación de una actividad que diseñaron nuestres colegas de Exactas-Programa y amablemente nos dejaron usar aquí. 
 
 El objetivo de esta actividad es hacer un programa en Python que responda la pregunta: **¿Cuántas figuritas hay que comprar para completar el álbum del Mundial?** Guardá todo lo que hagas en un archivo `figuritas.py`, te lo vamos a pedir al finalizar la clase.
+
+Si querés podés ver este [video](https://youtu.be/2aGgudx3nvE) donde presentamos estos ejercicios.
 
 ![Album de Figuritas](./completo.jpg)
 
@@ -66,7 +68,7 @@ Esta función y la anterior son realmente sencillas --cada una puede escribirse 
 
 
 ### Ejercicio 5.12: Comprar 
-Alguna de las funciones que introdujimos en la [Sección 5.1](../05_Random_Plt_Dbg/01_Random.md#valores-discretos) sirve para devolver un número entero aleatorio dentro de un rango (¿cuál era?).
+Alguna de las funciones que introdujimos en la [Sección 5.2](../05_Random_Plt_Dbg/02_Random.md#valores-discretos) sirve para devolver un número entero aleatorio dentro de un rango (¿cuál era?).
 Implementá una función `comprar_figu(figus_total)` que reciba el número total de figuritas que tiene el álbum (dado por el parámetro `figus_total`) y devuelva un número entero aleatorio que representa la figurita que nos tocó.
 
 ### Ejercicio 5.13: Cantidad de compras 
@@ -81,10 +83,13 @@ Ejecutá `n_repeticiones = 1000` veces la función anterior utilizando `figus_to
 
 
 ### Ejercicio 5.15: 
-Calculá `n_repeticiones=100` veces la función `cuantas_figus(figus_total=670)` y guardá los resultados obtenidos en cada repetición en una lista.
-Con los resultados obtenidos estimá cuántas figuritas hay que comprar, en promedio, para completar el álbum (de 670 figuritas).
+Escribí una función llamada `experimento_figus(n_repeticiones, figus_total)` que simule el llenado de `n_repeticiones` álbums de `figus_total` figuritas y devuelva el número estimado de figuritas que hay que comprar, en promedio, para completar el álbum.
 
-Guardá todo lo que hiciste hasta aquí sobre figuritas en un archivo `figuritas.py`. Lo que sigue profundiza un poco más en el asunto.
+Para esto, una posibilidad es que la función `experimento_figus()` llame a la función `cuantas_figus()` tantas veces como lo indica el parámetro `n_repeticiones` y guarde los resultados parciales en una lista, a partir de la cual luego realice el promedio.
+
+Guardá todo lo que hiciste hasta aquí sobre figuritas en un archivo `figuritas.py` para el cierre de la clase. Lo que sigue profundiza un poco más en el asunto.
+
+¿Cuánto te da para 100 repeticiones en un álbum de 670 figuritas?
 
 
 ### Ahora con paquetes
@@ -151,7 +156,7 @@ _Sugerencia:_ No leas esto antes de hacer el ejercicio. Hacelo primero y luego m
 ```
 
 ### Ejercicio 5.21: Plotear el histograma
-Usá un código similar al del [Ejercicio 5.9](../05_Random_Plt_Dbg/02_NumPy_Arrays.md#ejercicio-59-empezando-a-plotear) para hacer un histograma de la cantidad de paquetes que se compraron en cada experimento, ajustando la cantidad de _bins_ para que el gráfico se vea lo mejor posible.
+Usá un código similar al del [Ejercicio 5.9](../05_Random_Plt_Dbg/03_NumPy_Arrays.md#ejercicio-59-empezando-a-plotear) para hacer un histograma de la cantidad de paquetes que se compraron en cada experimento, ajustando la cantidad de _bins_ para que el gráfico se vea lo mejor posible.
 
 
 ### Ejercicio 5.22:  
@@ -163,7 +168,7 @@ Repetí suponiendo que no hay figuritas repetidas en un paquete. ¿Cuánto cambi
 ### Ejercicio 5.24: Cooperar vs competir
 Por último, suponé que cinco amigues se juntan y deciden compartir la compra de figuritas y el llenado de sus cinco álbumes solidariamente. Calculá cuántos paquetes deberían comprar si deben completar todos. Hacé 100 repeticiones y compará el resultado con la compra individual que calculaste antes.
 
-Acordate de guardar todo lo que hiciste sobre figuritas en un archivo `figuritas.py`.
+Acordate de guardar todo lo que hiciste sobre figuritas en un archivo `figuritas.py`. Tené en cuenta que el archivo que entregues debe poder ser importado para testear la función `experimento_figus()` sin que se ejecuten comandos no deseados.
 
 
 

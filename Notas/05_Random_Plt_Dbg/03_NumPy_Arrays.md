@@ -1,8 +1,10 @@
-# 5.2 NumPy
+# 5.3 NumPy
 
 Esta es una introducción a la biblioteca NumPy (**Numerical Python**) de Python. Se trata de una colección de módulos de código abierto que tiene aplicaciones en casi todos los campos de las ciencias y de la ingeniería. Es el estándar para trabajar con datos numéricos en Python. Muchas otras bibliotecas y módulos de Python como Pandas, SciPy, Matplotlib, scikit-learn, scikit-image usan numpy.
 
 Esta biblioteca permite trabajar cómodamente con matrices multidimensionales por medio del tipo **ndarray**, un objeto n-dimensional homogéneo (es decir, con todas sus entradas del mismo tipo), y con métodos para operar eficientemente sobre él. numpy puede usarse para una amplia variedad de operaciones matemáticas sobre matrices. Le agrega a Python estructuras de datos muy potentes sobre las que puedés hacer cálculos y operar matemáticamente con eficiencia y a un alto nivel.
+
+Te dejamos un [video](https://youtu.be/e8T5PzxY5HA) donde introducimos este tema.
 
 ##  Instalar e importar numpy
 
@@ -830,13 +832,15 @@ array([1., 2., 3., 4., 5., 6., 7., 8.])
 Las funciones `savetxt()` y `loadtxt()` aceptan parámetros adicionales para especificar el encabezado y los delimitadores. Si bien los archivos de texto son sencillos para compartir, los archivos .npy (y .npz) son más pequeños y se leen más rápidamente. 
 
 ### Ejercicio 5.8: Guardar temperaturas
-Ampliá el código de `termometro.py` que escribiste en el [Ejercicio 5.6](../05_Random_Plt_Dbg/01_Random.md#ejercicio-56-gaussiana) para que guarde el vector con las temperaturas simuladas en el directorio `Data` de tu carpeta de ejercicios, en un archivo llamado `Temperaturas.npy`. Hacé que corra 999 veces en lugar de solo 99.
+Ampliá el código de la función `medir_temp(n)` en tu archivo `termometro.py` que escribiste en el [Ejercicio 5.6](../05_Random_Plt_Dbg/02_Random.md#ejercicio-56-gaussiana) para que además de devolver las temperaturas simuladas, guarde el vector con estas temperaturas en el directorio `Data` de tu carpeta de ejercicios, en un archivo llamado `temperaturas.npy`. Hacé que corra `n = 999` veces. 
+
+Este ejercicio te lo vamos a pedir en el cierre de clase.
 
 
 ### Ejercicio 5.9: Empezando a plotear
 En un rato vamos a empezar a hacer gráficos con Python. Aquí solo un botón de muestra.
 
-Escribí un archivo `plotear_temperaturas.py` que lea el archivo de datos  `Temperaturas.npy` con 999 mediciones simuladas que creaste recién y, usando el siguiente ejemplo, hacé un histograma de las temperaturas simuladas:
+Escribí una función `plotear_temperaturas()` en un archivo `plotear_temperaturas.py` que lea el archivo de datos `temperaturas.npy` (debería tener las 999 mediciones simuladas que creaste recién) y haga un histograma de las temperaturas simuladas. Te podés basar en el siguiente ejemplo:
 
 ```python
 import matplotlib.pyplot as plt
