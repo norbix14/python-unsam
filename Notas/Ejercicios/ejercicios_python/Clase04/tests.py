@@ -85,19 +85,19 @@ def test_arboles():
   alt_jacaranda = [
     arbol['altura_tot']
     for arbol in arboleda
-    if (arbol['nombre_com'] == especies[2])
+    if (arbol['nombre_com'].lower() == especies[2].lower())
   ]
   r_a = len(alt_jacaranda)
   alt_diam_jacaranda = [
     (arbol['altura_tot'], arbol['diametro'])
     for arbol in arboleda
-    if (arbol['nombre_com'] == especies[2])
+    if (arbol['nombre_com'].lower() == especies[2].lower())
   ]
   r_a_d = len(alt_diam_jacaranda)
   pprint(arboleda[:1])
   pprint(medidas)
-  pprint(f'{r_a} registros para alturas de {especies[2]}')
-  pprint(f'{r_a_d} registros para alturas y diametros de {especies[2]}')
+  print(f'{r_a} registros para alturas de {especies[2]}')
+  print(f'{r_a_d} registros para alturas y diametros de {especies[2]}')
   return 0
 
 #%% correr tests desde consola

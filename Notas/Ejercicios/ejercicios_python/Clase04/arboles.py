@@ -2,7 +2,6 @@
 # arboles.py
 
 import csv
-from pprint import pprint
 
 ######################################################################
 """
@@ -68,33 +67,31 @@ def leer_arboles(nombre_archivo):
     return 'No existe el archivo o carpeta'
 
 #%% 4.16 - alturas de los jacaranda
-def alturas_jacaranda():
+def alturas_jacaranda(especie = 'Jacarandá'):
   """Mostrar las alturas de los Jacarandá."""
   nombre_archivo = '../Data/arbolado-en-espacios-verdes.csv'
-  especie = 'Jacarandá'
   arboleda = leer_arboles(nombre_archivo)
-  alt_jacaranda = [
-    float(arbol['altura_tot'])
+  alt_especie = [
+    arbol['altura_tot']
     for arbol in arboleda
-    if (arbol['nombre_com'] == especie)
+    if (arbol['nombre_com'].lower() == especie.lower())
   ]
-  return alt_jacaranda
+  return alt_especie
 
 #%% 4.17 - altos y diametros de los jacaranda
-def alturas_diametros_jacaranda():
+def alturas_diametros_jacaranda(especie = 'Jacarandá'):
   """Mostrar las alturas y diametros de los Jacarandá."""
   nombre_archivo = '../Data/arbolado-en-espacios-verdes.csv'
-  especie = 'Jacarandá'
   arboleda = leer_arboles(nombre_archivo)
-  alt_diam_jacaranda = [
-    (float(arbol['altura_tot']), float(arbol['diametro']))
+  alt_diam_especie = [
+    (arbol['altura_tot'], arbol['diametro'])
     for arbol in arboleda
-    if (arbol['nombre_com'] == especie)
+    if (arbol['nombre_com'].lower() == especie.lower())
   ]
-  return alt_diam_jacaranda
+  return alt_diam_especie
 
 #%% 4.18 - medidas_de_especies(especies, arboleda)
-def medidas_de_especies(especies, arboleda):
+def medidas_de_especies(especies = [], arboleda = []):
   """Mostrar las medidas de una especie en la arboleda.
 
   Parametros:
@@ -110,19 +107,28 @@ def medidas_de_especies(especies, arboleda):
     # se muestran cuantos elementos tendria cada especie
     {'Eucalipto': 4112, 'Jacarandá': 3255, 'Palo borracho rosado': 3150}
   """
-  lista = []
-  for especie in especies:
-    alt_diam = [
-      (float(arbol['altura_tot']), float(arbol['diametro']))
-      for arbol in arboleda
-      if arbol['nombre_com'].lower() == especie.lower()
-    ]
-    lista.append(len(alt_diam))
-  diccionario = {
-    especie: alt_diam
-    for especie, alt_diam in zip(especies, lista)
-  }
-  return diccionario
+  if (type(especies) is list):
+    if (len(especies) > 0):
+      lista = []
+      for especie in especies:
+        alt_diam = [
+          (arbol['altura_tot'], arbol['diametro'])
+          for arbol in arboleda
+          if arbol['nombre_com'].lower() == especie.lower()
+        ]
+        ###########################
+        # MODIFICAR ESTA PARTE LUEGO.
+        # DEBE AGREGARSE LA TUPLA CON LAS MEDIDAS.
+        # SOLO SE AGREGA LA LONGITUD A MODO DE PRUEBA.
+        lista.append(len(alt_diam))
+        ###########################
+      diccionario = {
+        especie: alt_diam
+        for especie, alt_diam in zip(especies, lista)
+      }
+      return diccionario
+    return {}
+  return {}
 
 #%% test
 if __name__ == '__main__':
@@ -131,18 +137,18 @@ if __name__ == '__main__':
   arboleda = leer_arboles(nombre_archivo)
   # 4.16
   alt_especie = [
-    float(arbol['altura_tot'])
+    arbol['altura_tot']
     for arbol in arboleda
-    if (arbol['nombre_com'] == especie)
+    if (arbol['nombre_com'].lower() == especie.lower())
   ]
   # 4.17
   alt_diam_especie = [
-    (float(arbol['altura_tot']), float(arbol['diametro']))
+    (arbol['altura_tot'], arbol['diametro'])
     for arbol in arboleda
-    if (arbol['nombre_com'] == especie)
+    if (arbol['nombre_com'].lower() == especie.lower())
   ]
   # resultados
   r_a = len(alt_especie)
   r_a_d = len(alt_diam_especie)
-  pprint(f'{r_a} registros para alturas de {especie}')
-  pprint(f'{r_a_d} registros para alturas y diametros de {especie}')
+  print(f'{r_a} registros para alturas de {especie}')
+  print(f'{r_a_d} registros para alturas y diametros de {especie}')

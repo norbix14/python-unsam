@@ -38,10 +38,10 @@ def invertir_lista(lista = []):
 
 #%% propagar()
 def propagar(vector = []):
-  """Mostrar un nuevo vector.
+  """Mostrar un nuevo vector pero propagado.
 
   Parametros:
-    `vector` (): vector de elementos.
+    `vector` (list): vector de elementos.
 
   Ejemplo:
     >>> vector1 = [0, 0, 0, -1, 1, 0, 0, 0, -1, 0, 1, 0, 0]
@@ -54,40 +54,26 @@ def propagar(vector = []):
   if (type(vector) is list):
     if (len(vector) <= 0):
       return []
-    ########################################
-    copia = list(vector)
-    prev = vector[0]
-    for i, el in enumerate(vector):
-      if el == 0:
-        if prev == 1:
-          copia[i] = 1
-          prev = 1
-      elif el == 1:
-        if prev == 0:
-          copia[i] = 1
-          prev = 1
+    for r in ['start', 'end']:
+      if r == 'start':
+        copia = list(vector)
+      if r == 'end':
+        vector = invertir_lista(copia)
+        copia = list(vector)
+      prev = vector[0]
+      for i, el in enumerate(vector):
+        if el == 0:
+          if prev == 1:
+            copia[i] = 1
+            prev = 1
+        elif el == 1:
+          if prev == 0:
+            copia[i] = 1
+            prev = 1
+          else:
+            prev = 1
         else:
-          prev = 1
-      else:
-        prev = el
-    ########################################
-    vector = invertir_lista(copia)
-    copia = list(vector)
-    prev = vector[0]
-    for i, el in enumerate(vector):
-      if el == 0:
-        if prev == 1:
-          copia[i] = 1
-          prev = 1
-      elif el == 1:
-        if prev == 0:
-          copia[i] = 1
-          prev = 1
-        else:
-          prev = 1
-      else:
-        prev = el
-    ########################################
+          prev = el
     return invertir_lista(copia)
   return vector
 
