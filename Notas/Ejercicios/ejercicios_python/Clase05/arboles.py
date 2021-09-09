@@ -164,31 +164,38 @@ def histograma_altos_jacaranda(especie = 'jacarandá', nombre_archivo = '../Data
   plt.show()
 
 #%% 5.26 - scatterplot (diametro vs alto) de jacarandas
-def scatter_hd(lista_de_pares = []):
+def scatter_hd(lista_de_pares = [], especie = 'especie'):
   """Generar un scatterplot para visualizar relacion entre altura y diametro.
 
   Parametros:
     `lista_de_pares` (list): listado con pares de tuplas.
+    `especie` (str): especie a mostrar.
 
   Ejemplo:
     >>> altdiam = alturas_diametros_jacaranda()
     >>> scatter_hd(altdiam)
-    # mostrar scatterplot
+    # mostrar scatterplot de la especie
   """
+  x = []
+  y = []
   N = len(lista_de_pares)
+  if (N > 0):
+    N = len(lista_de_pares)
+    # x=d (diametro)
+    x = [d for h,d in lista_de_pares]
+    # y=h (altura)
+    y = [h for h,d in lista_de_pares]
   colors = np.random.rand(N)
   # 0 to 15 point radii
   area = (30 * np.random.rand(N))**2
-  # y=h (altura)
-  y = [h for h,d in lista_de_pares]
-  # x=d (diametro)
-  x = [d for h,d in lista_de_pares]
+  xlim = max(x) + 10 if x else 10
+  ylim = max(y) + 10 if y else 10
   plt.scatter(x, y, s=area, c=colors, alpha=0.5)
-  plt.title('Relacion diametro-alto para los Jacarandá')
-  plt.xlabel('diametro (cm)')
-  plt.xlim(0, 30)
-  plt.ylabel('alto (m)')
-  plt.ylim(0, 100)
+  plt.title(f'Relacion diametro-alto de {especie}')
+  plt.xlabel('Diametro (cm)')
+  plt.xlim(0, xlim)
+  plt.ylabel('Altura (m)')
+  plt.ylim(0, ylim)
   plt.show()
   return None
 
@@ -207,7 +214,7 @@ def scatterplot_eucalipto(especie = 'eucalipto', archivo = '../Data/arbolado-en-
   """
   arboleda = leer_arboles(archivo)
   medidas = medidas_de_especies([especie], arboleda)
-  scatter_hd(medidas[especie])
+  scatter_hd(medidas[especie], especie)
   return None
 # palo borracho rosado
 def scatterplot_palo_borracho_rosado(especie = 'palo borracho rosado', archivo = '../Data/arbolado-en-espacios-verdes.csv'):
@@ -223,7 +230,7 @@ def scatterplot_palo_borracho_rosado(especie = 'palo borracho rosado', archivo =
   """
   arboleda = leer_arboles(archivo)
   medidas = medidas_de_especies([especie], arboleda)
-  scatter_hd(medidas[especie])
+  scatter_hd(medidas[especie], especie)
   return None
 # jacarandá
 def scatterplot_jacaranda(especie = 'jacarandá', archivo = '../Data/arbolado-en-espacios-verdes.csv'):
@@ -239,5 +246,21 @@ def scatterplot_jacaranda(especie = 'jacarandá', archivo = '../Data/arbolado-en
   """
   arboleda = leer_arboles(archivo)
   medidas = medidas_de_especies([especie], arboleda)
-  scatter_hd(medidas[especie])
+  scatter_hd(medidas[especie], especie)
+  return None
+# generico
+def scatterplot_generico(especie = 'cedro del himalaya', archivo = '../Data/arbolado-en-espacios-verdes.csv'):
+  """Mostrar scatterplot de la especie provista.
+
+  Parametros:
+    `especie` (str): especie a mostrar el scatterplot.
+    `archivo` (str): ruta necesaria para buscar todos los arboles.
+
+  Ejemplo:
+    >>> scatterplot_generico('cedro del himalaya')
+    # muestra el grafico de la especie provista
+  """
+  arboleda = leer_arboles(archivo)
+  medidas = medidas_de_especies([especie], arboleda)
+  scatter_hd(medidas[especie], especie)
   return None
