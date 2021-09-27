@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # leer_precios.py
-
-import csv
-from pprint import pprint
-
-######################################################################
 """
 @author: Norberto Fabrizio
 """
+
+import csv
 
 # 2.17
 
@@ -19,39 +17,28 @@ def leer_precios(nombre_archivo):
     `nombre_archivo` (str): ruta del archivo csv.
 
   Ejemplo:
-    >>> from pprint import pprint
-    >>> precios = leer_precios('../Data/precios.csv')
-    >>> pprint(precios)
+    >>> leer_precios('../Data/precios.csv')
     # se muestran algunos elementos a modo de ejemplo
-    {'Acelga': 29.26,
-     'Ajo': 15.19,
-     'Batata': 55.16,
-     'Berenjena': 28.47,
-     'Bruselas': 15.72,
-     'Caqui': 105.46,
-     'Cebolla': 58.99,
-     'Cebollín': 57.1,
-     'Cereza': 11.27,
-     'Ciruela': 44.85}
+    {'Acelga': 29.26, 'Ajo': 15.19}
   """
-  diccionario = {}
-  errores = 0
   try:
-    with open(nombre_archivo, 'rt') as archivo:
+    diccionario = {}
+    errores = 0
+    with open(nombre_archivo, 'rt', encoding='UTF-8') as archivo:
       filas = csv.reader(archivo)
       for fila in filas:
         try:
           nombre = fila[0]
           precio = float(fila[1])
           diccionario[nombre] = precio
-        except IndexError:
+        except:
           errores += 1
     return diccionario
   except FileNotFoundError:
-    return 'No existe el archivo o carpeta'
+    print(f'No existe el archivo o carpeta "{nombre_archivo}".')
+    return {}
 
-#%% precios de los cajones
-precios = leer_precios('../Data/precios.csv')
-
-#%% ver precios
-pprint(precios)
+#%%
+if __name__ == '__main__':
+  precios = leer_precios('../Data/precios.csv')
+  print(precios)

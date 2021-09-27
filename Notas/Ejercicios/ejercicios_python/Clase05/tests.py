@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # tests.py
 
 import random
+
 from pprint import pprint
 
 import generala
@@ -12,7 +14,7 @@ import plotear_temperaturas as plotear
 import figuritas
 import arboles
 
-######################################################################
+###############################################################################
 
 #%% test generala
 def test_generala():
@@ -90,7 +92,6 @@ def test_ploteo():
 def main():
   print('ARCHIVO DE PRUEBAS')
   print()
-  return None
 
 #%%
 if __name__ == '__main__':

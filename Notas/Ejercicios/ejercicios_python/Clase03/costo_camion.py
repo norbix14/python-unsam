@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # costo_camion.py
-
-import csv
-
-######################################################################
 """
 @author: Norberto Fabrizio
 """
+
+import csv
 
 # 3.8
 
@@ -18,16 +17,15 @@ def costo_camion(nombre_archivo):
     `nombre_archivo` (str): ruta del archivo csv.
 
   Ejemplo:
-    >>> costo = costo_camion('ruta/al/archivo/csv')
-    >>> print(costo)
-    123456789.0 # dependiendo del archivo pasado
+    >>> costo_camion('../Data/camion.csv')
+    47671.15
   """
-  costo_total = 0.0
   try:
-    with open(nombre_archivo, 'rt') as archivo:
+    costo_total = 0.0
+    with open(nombre_archivo, 'rt', encoding='UTF-8') as archivo:
       filas = csv.reader(archivo)
       encabezados = next(filas)
-      for n_fila, fila in enumerate(filas, start = 0):
+      for n_fila, fila in enumerate(filas):
         record = dict(zip(encabezados, fila))
         try:
           cajones = int(record['cajones'])
@@ -37,15 +35,15 @@ def costo_camion(nombre_archivo):
           print(f'Fila {n_fila}: No puede interpretar {fila}')
     return costo_total
   except FileNotFoundError:
-    return 'No existe el archivo o carpeta'
+    print(f'No existe el archivo o carpeta "{nombre_archivo}".')
+    return 0.0
+
+#%%
+def main():
+  nombre_archivo = '../Data/camion.csv'
+  costo = costo_camion(nombre_archivo)
+  print(costo)
 
 #%% 
 if __name__ == '__main__':
-  #%% archivo csv
-  nombre_archivo = '../Data/camion.csv'
-
-  #%% calcular costo
-  costo = costo_camion(nombre_archivo)
-
-  #%% ver costo
-  print(costo)
+  main()

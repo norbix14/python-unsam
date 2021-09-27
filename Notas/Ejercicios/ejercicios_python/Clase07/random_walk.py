@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # random_walk.py
+"""
+@author: Norberto Fabrizio
+"""
 
 import sys
 
 import numpy as np
 
 from matplotlib import pyplot as plt
-
-###############################################################################
 
 # 7.7 - La biblioteca matplotlib
 
@@ -43,8 +44,7 @@ def randomwalk(largo = 100):
     `largo` (int): cantidad de pasos.
 
   Ejemplo:
-    >>> pasos = randomwalk(10)
-    >>> print(pasos)
+    >>> randomwalk(10)
     array([-1, -2, -1, -1, -2, -1, -1, -1, -1, -1])
 
   Ultima actualizacion: 20-09-21 15:00

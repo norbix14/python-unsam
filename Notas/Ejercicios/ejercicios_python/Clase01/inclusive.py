@@ -1,14 +1,11 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # inclusive.py
-
-######################################################################
 """
 @author: Norberto Fabrizio
 """
 
-#%%
-# 1.29
-
+#%% 1.29 - 
 def inclusive(frase):
   """Traducir a lenguaje inclusivo.
 
@@ -16,8 +13,7 @@ def inclusive(frase):
     `frase` (str): cadena a traducir.
 
   Ejemplo:
-  >>> traduccion = inclusive('todos somos programadores')
-  >>> print(traduccion)
+  >>> inclusive('todos somos programadores')
   'todes somes programadores'
   """
   palabras = frase.strip().split(' ')
@@ -41,13 +37,13 @@ def inclusive(frase):
   return traduccion
 
 #%%
-a = 'todos somos programadores'
-b = 'los hermanos sean unidos porque esa es la ley primera'
-c = '¿como transmitir a los otros el infinito Aleph?'
-d = 'todos, tu tambien'
-
-#%%
-print(inclusive(a))
-print(inclusive(b))
-print(inclusive(c))
-print(inclusive(d))
+if __name__ == '__main__':
+  a = 'todos somos programadores'
+  b = 'los hermanos sean unidos porque esa es la ley primera'
+  c = '¿como transmitir a los otros el infinito Aleph?'
+  d = 'todos, tu tambien'
+  #
+  print(inclusive(a))
+  print(inclusive(b))
+  print(inclusive(c))
+  print(inclusive(d))

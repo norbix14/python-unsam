@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # clases.py
+"""
+@author: Norberto Fabrizio
+"""
 
 import sys
 
 import numpy as np
 
 from matplotlib import pyplot as plt
-
-###############################################################################
 
 # 7.7 - La biblioteca matplotlib
 

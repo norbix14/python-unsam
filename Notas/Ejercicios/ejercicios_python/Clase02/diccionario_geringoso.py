@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # diccionario_geringoso.py
-
-######################################################################
 """
 @author: Norberto Fabrizio
 """
@@ -16,13 +15,8 @@ def diccionario_geringoso(lista = []):
     `lista` (list[str]): lista de palabras a traducir.
 
   Ejemplo:
-    >>> from pprint import pprint
-    >>> lista = ['banana', 'manzana', 'mandarina']
-    >>> geringoso = diccionario_geringoso(lista)
-    >>> pprint(geringoso)
-    {'banana': 'bapanapanapa',
-     'manzana': 'mapanzapanapa',
-     'mandarina': 'mapandaparipinapa'}
+    >>> diccionario_geringoso(['banana', 'manzana', 'mandarina'])
+    {'banana': 'bapanapanapa', 'manzana': 'mapanzapanapa', 'mandarina': 'mapandaparipinapa'}
   """
   vocales = ['a', 'e', 'i', 'o', 'u']
   silabas = ['pa', 'pe', 'pi', 'po', 'pu']
@@ -36,11 +30,6 @@ def diccionario_geringoso(lista = []):
     diccionario[palabra] = geringoso
   return diccionario
 
-#%% listado de palabras
-lista = ['banana', 'manzana', 'mandarina']
-
-#%% traducir lista a geringoso
-geringoso = diccionario_geringoso(lista)
-
-#%% imprimir lista traducida
-print(geringoso)
+#%%
+if __name__ == '__main__':
+  print(diccionario_geringoso(['banana', 'manzana', 'mandarina']))

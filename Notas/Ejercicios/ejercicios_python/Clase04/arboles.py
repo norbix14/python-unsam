@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # arboles.py
-
-import csv
-
-######################################################################
 """
 @author: Norberto Fabrizio
 """
+
+import csv
 
 # 4.5
 
@@ -18,13 +17,11 @@ def leer_arboles(nombre_archivo):
     `nombre_archivo` (str): ruta al archivo csv.
 
   Ejemplo:
-    >>> from pprint import pprint
     >>> nombre_archivo = '../Data/arbolado-en-espacios-verdes.csv'
     >>> arboleda = leer_arboles(nombre_archivo)
-    # tener cuidado, ya que mostraria 51502 resultados
-    >>> print(len(arboleda))
+    >>> len(arboleda)
     51502
-    >>> pprint(arboleda[:1])
+    >>> arboleda[:1]
     [{'altura_tot': 6,
       'coord_x': 98692.30571900001,
       'coord_y': 98253.300738,
@@ -45,26 +42,19 @@ def leer_arboles(nombre_archivo):
                   'MORENO (AU 6) - AMEGHINO, FLORENTINO, DR.'}]
   """
   try:
-    with open(nombre_archivo, 'rt') as archivo:
+    with open(nombre_archivo, 'rt', encoding='UTF-8') as archivo:
       filas = csv.reader(archivo)
       cabeceras = next(filas)
-      tipos = [float, float, int, int, int, int, int, str, str,
-              str, str, str, str, str, str, float, float]
+      tipos = [float, float, int, int, int, int, int, str,
+        str, str, str, str, str, str, str, float, float]
       arboleda = [
-        dict(
-          zip(
-            cabeceras, 
-            [
-              func(val)
-              for func, val in zip(tipos, fila)
-            ]
-          )
-        )
+        dict(zip(cabeceras, [func(val) for func, val in zip(tipos, fila)]))
         for fila in filas
       ]
-    return arboleda
+      return arboleda
   except FileNotFoundError:
-    return 'No existe el archivo o carpeta'
+    print(f'No existe el archivo o carpeta "{nombre_archivo}".')
+    return []
 
 #%% 4.16 - alturas de los jacaranda
 def alturas_jacaranda(especie = 'Jacarandá'):
@@ -102,36 +92,38 @@ def medidas_de_especies(especies = [], arboleda = []):
     >>> nombre_archivo = '../Data/arbolado-en-espacios-verdes.csv'
     >>> especies = ['Eucalipto', 'Palo borracho rosado', 'Jacarandá']
     >>> arboleda = leer_arboles(nombre_archivo)
-    >>> medidas = medidas_de_especies(especies, arboleda)
-    >>> print(medidas)
+    >>> medidas_de_especies(especies, arboleda)
     # se muestran cuantos elementos tendria cada especie
     {'Eucalipto': 4112, 'Jacarandá': 3255, 'Palo borracho rosado': 3150}
   """
-  if (type(especies) is list):
-    if (len(especies) > 0):
-      lista = []
-      for especie in especies:
-        alt_diam = [
-          (arbol['altura_tot'], arbol['diametro'])
-          for arbol in arboleda
-          if arbol['nombre_com'].lower() == especie.lower()
-        ]
-        ###########################
-        # MODIFICAR ESTA PARTE LUEGO.
-        # DEBE AGREGARSE LA TUPLA CON LAS MEDIDAS.
-        # SOLO SE AGREGA LA LONGITUD A MODO DE PRUEBA.
-        lista.append(len(alt_diam))
-        ###########################
+  if (len(arboleda) <= 0):
+    return {}
+  lista = []
+  diccionario = {}
+  for especie in especies:
+    try:
+      alt_diam = [
+        (arbol['altura_tot'], arbol['diametro'])
+        for arbol in arboleda
+        if arbol['nombre_com'].lower() == especie.lower()
+      ]
+      ###########################
+      # MODIFICAR ESTA PARTE LUEGO.
+      # DEBE AGREGARSE LA TUPLA CON LAS MEDIDAS.
+      # SOLO SE AGREGA LA LONGITUD A MODO DE PRUEBA.
+      lista.append(len(alt_diam))
+      ###########################
       diccionario = {
         especie: alt_diam
         for especie, alt_diam in zip(especies, lista)
       }
-      return diccionario
-    return {}
-  return {}
+    except:
+      pass
+  return diccionario
 
-#%% test
-if __name__ == '__main__':
+#%%
+def main():
+  """Main. Ejecutar algunas pruebas."""
   nombre_archivo = '../Data/arbolado-en-espacios-verdes.csv'
   especie = 'Jacarandá'
   arboleda = leer_arboles(nombre_archivo)

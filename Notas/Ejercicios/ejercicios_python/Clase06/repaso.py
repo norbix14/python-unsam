@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # repaso.py
-
-######################################################################
+"""
+@author: Norberto Fabrizio
+"""
 
 # 6.1 - Repaso de temas pasados
 

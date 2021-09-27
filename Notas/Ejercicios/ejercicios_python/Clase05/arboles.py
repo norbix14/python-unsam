@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # arboles.py
-
-import csv
-import numpy as np
-import matplotlib.pyplot as plt
-
-######################################################################
 """
 @author: Norberto Fabrizio
 """
+
+import csv
+
+import numpy as np
+
+import matplotlib.pyplot as plt
 
 # 5.5 - Graficos del arbolado porteño.
 
@@ -20,13 +21,9 @@ def leer_arboles(nombre_archivo = '../Data/arbolado-en-espacios-verdes.csv'):
     `nombre_archivo` (str): ruta al archivo csv.
 
   Ejemplo:
-    >>> from pprint import pprint
     >>> nombre_archivo = '../Data/arbolado-en-espacios-verdes.csv'
     >>> arboleda = leer_arboles(nombre_archivo)
-    # tener cuidado, ya que mostraria 51502 resultados
-    >>> print(len(arboleda))
-    51502
-    >>> pprint(arboleda[:1])
+    >>> arboleda[:1]
     [{'altura_tot': 6,
       'coord_x': 98692.30571900001,
       'coord_y': 98253.300738,
@@ -47,26 +44,19 @@ def leer_arboles(nombre_archivo = '../Data/arbolado-en-espacios-verdes.csv'):
                   'MORENO (AU 6) - AMEGHINO, FLORENTINO, DR.'}]
   """
   try:
-    with open(nombre_archivo, 'rt') as archivo:
+    with open(nombre_archivo, 'rt', encoding='UTF-8') as archivo:
       filas = csv.reader(archivo)
       cabeceras = next(filas)
-      tipos = [float, float, int, int, int, int, int, str, str,
-              str, str, str, str, str, str, float, float]
+      tipos = [float, float, int, int, int, int, int, str,
+        str, str, str, str, str, str, str, float, float]
       arboleda = [
-        dict(
-          zip(
-            cabeceras, 
-            [
-              func(val)
-              for func, val in zip(tipos, fila)
-            ]
-          )
-        )
+        dict(zip(cabeceras, [func(val) for func, val in zip(tipos, fila)]))
         for fila in filas
       ]
-    return arboleda
+      return arboleda
   except FileNotFoundError:
-    return 'No existe el archivo o carpeta'
+    print(f'No existe el archivo o carpeta "{nombre_archivo}".')
+    return []
 
 #%% Clase04_4.17 - altos y diametros de los jacaranda
 def alturas_diametros_jacaranda(especie = 'Jacarandá', nombre_archivo = '../Data/arbolado-en-espacios-verdes.csv'):
@@ -77,20 +67,10 @@ def alturas_diametros_jacaranda(especie = 'Jacarandá', nombre_archivo = '../Dat
     `nombre_archivo` (str): ruta al archivo CSV para buscar los arboles.
 
   Ejemplo:
-    >>> from pprint import pprint
-    >>> altdiam = alturas_diametros_jacaranda('jacarandá')
-    >>> pprint(altdiam[:10])
-    # datos como (altura, diametro)
-    [(5, 10),
-     (5, 10),
-     (5, 10),
-     (5, 10),
-     (5, 10),
-     (5, 10),
-     (5, 10),
-     (5, 10),
-     (5, 10),
-     (5, 10)]
+    >>> nombre_archivo = '../Data/arbolado-en-espacios-verdes.csv'
+    >>> alturas_diametros_jacaranda('jacarandá', nombre_archivo)[:5]
+    # [(altura, diametro)]
+    [(5, 10), (5, 10), (5, 10), (5, 10), (5, 10)]
   """
   arboleda = leer_arboles(nombre_archivo)
   alt_diam_especie = [
@@ -109,35 +89,30 @@ def medidas_de_especies(especies = [], arboleda = []):
     `arboleda` (list): lista con informacion de los arboles.
 
   Ejemplo:
-    >>> from pprint import pprint
     >>> nombre_archivo = '../Data/arbolado-en-espacios-verdes.csv'
     >>> especies = ['Eucalipto', 'Palo borracho rosado', 'Jacarandá']
     >>> arboleda = leer_arboles(nombre_archivo)
     >>> medidas = medidas_de_especies(especies, arboleda)
-    >>> pprint(medidas)
-    # se muestra un modelo de lo que devolveria
-    # {especie: [(altura, diametro), (h, d)]}
-    {'Eucalipto': [(1, 2), (3, 4)],
-     'Jacarandá': [(1, 2), (3, 4)],
-     'Palo borracho rosado': [(1, 2), (3, 4)]}
+    >>> medidas['eucalipto'][:5]
+    [(20, 40), (20, 40), (20, 40), (20, 40), (20, 40)]
+    >>> medidas['palo borracho rosado'][:5]
+    [(10, 50), (10, 50), (10, 50), (2, 4), (2, 4)]
+    >>> medidas['jacarandá'][:5]
+    [(5, 10), (5, 10), (5, 10), (5, 10), (5, 10)]
   """
-  if (type(especies) is list):
-    if (len(especies) <= 0):
-      return {}
-    lista = []
-    for especie in especies:
-      alt_diam = [
-        (arbol['altura_tot'], arbol['diametro'])
-        for arbol in arboleda
-        if arbol['nombre_com'].lower() == especie.lower()
-      ]
-      lista.append(alt_diam)
-    diccionario = {
-      especie: alt_diam
-      for especie, alt_diam in zip(especies, lista)
-    }
-    return diccionario
-  return {}
+  lista = [
+    [
+      (arbol['altura_tot'], arbol['diametro'])
+      for arbol in arboleda
+      if arbol['nombre_com'].lower() == especie.lower()
+    ]
+    for especie in especies
+  ]
+  diccionario = {
+    especie: alt_diam
+    for especie, alt_diam in zip(especies, lista)
+  }
+  return diccionario
 
 #%% 5.25 - histograma de altos de jacarandas
 def histograma_altos_jacaranda(especie = 'jacarandá', nombre_archivo = '../Data/arbolado-en-espacios-verdes.csv'):
@@ -163,7 +138,7 @@ def histograma_altos_jacaranda(especie = 'jacarandá', nombre_archivo = '../Data
   plt.ylabel('Cantidad')
   plt.show()
 
-#%% 5.26 - scatterplot (diametro vs alto) de jacarandas
+#%% 5.26 - scatterplot
 def scatter_hd(lista_de_pares = [], especie = 'especie'):
   """Generar un scatterplot para visualizar relacion entre altura y diametro.
 
@@ -172,8 +147,10 @@ def scatter_hd(lista_de_pares = [], especie = 'especie'):
     `especie` (str): especie a mostrar.
 
   Ejemplo:
-    >>> altdiam = alturas_diametros_jacaranda()
-    >>> scatter_hd(altdiam)
+    >>> especies = ['eucalipto', 'palo borracho rosado', 'jacarandá']
+    >>> arboleda = leer_arboles('../Data/arbolado-en-espacios-verdes.csv')
+    >>> medidas = medidas_de_especies(especies, arboleda)
+    >>> scatter_hd(medidas['eucalipto'], 'eucalipto')
     # mostrar scatterplot de la especie
   """
   x = []
@@ -197,7 +174,6 @@ def scatter_hd(lista_de_pares = [], especie = 'especie'):
   plt.ylabel('Altura (m)')
   plt.ylim(0, ylim)
   plt.show()
-  return None
 
 #%% 5.27 - scatterplot para diferentes especies
 # eucalipto
@@ -215,7 +191,6 @@ def scatterplot_eucalipto(especie = 'eucalipto', archivo = '../Data/arbolado-en-
   arboleda = leer_arboles(archivo)
   medidas = medidas_de_especies([especie], arboleda)
   scatter_hd(medidas[especie], especie)
-  return None
 # palo borracho rosado
 def scatterplot_palo_borracho_rosado(especie = 'palo borracho rosado', archivo = '../Data/arbolado-en-espacios-verdes.csv'):
   """Mostrar scatterplot de la especie provista.
@@ -231,7 +206,6 @@ def scatterplot_palo_borracho_rosado(especie = 'palo borracho rosado', archivo =
   arboleda = leer_arboles(archivo)
   medidas = medidas_de_especies([especie], arboleda)
   scatter_hd(medidas[especie], especie)
-  return None
 # jacarandá
 def scatterplot_jacaranda(especie = 'jacarandá', archivo = '../Data/arbolado-en-espacios-verdes.csv'):
   """Mostrar scatterplot de la especie provista.
@@ -247,7 +221,6 @@ def scatterplot_jacaranda(especie = 'jacarandá', archivo = '../Data/arbolado-en
   arboleda = leer_arboles(archivo)
   medidas = medidas_de_especies([especie], arboleda)
   scatter_hd(medidas[especie], especie)
-  return None
 # generico
 def scatterplot_generico(especie = 'cedro del himalaya', archivo = '../Data/arbolado-en-espacios-verdes.csv'):
   """Mostrar scatterplot de la especie provista.
@@ -257,10 +230,10 @@ def scatterplot_generico(especie = 'cedro del himalaya', archivo = '../Data/arbo
     `archivo` (str): ruta necesaria para buscar todos los arboles.
 
   Ejemplo:
-    >>> scatterplot_generico('cedro del himalaya')
+    >>> archivo = '../Data/arbolado-en-espacios-verdes.csv'
+    >>> scatterplot_generico('cedro del himalaya', archivo)
     # muestra el grafico de la especie provista
   """
   arboleda = leer_arboles(archivo)
   medidas = medidas_de_especies([especie], arboleda)
   scatter_hd(medidas[especie], especie)
-  return None

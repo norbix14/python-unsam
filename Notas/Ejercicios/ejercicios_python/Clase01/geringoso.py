@@ -1,14 +1,11 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # geringoso.py
-
-######################################################################
 """
 @author: Norberto Fabrizio
 """
 
-#%%
-# 1.18
-
+#%% 1.18 - 
 def geringoso(cadena):
 	"""Agregar una silaba luego de una vocal.
 
@@ -16,7 +13,7 @@ def geringoso(cadena):
 		`cadena` (str): cadena a traducir.
 
 	Ejemplo:
-		>>> print(geringoso('cadena'))
+		>>> geringoso('cadena')
 		'capadepenapa'
 	"""
 	vocales = ['a', 'e', 'i', 'o', 'u']
@@ -29,4 +26,5 @@ def geringoso(cadena):
 	return traduccion
 
 #%%
-print(geringoso('cadena'))
+if __name__ == '__main__':
+	print(geringoso('cadena'))

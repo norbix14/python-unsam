@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # costo_camion.py
-
-import informe_funciones
-
-######################################################################
 """
 @author: Norberto Fabrizio
 """
+
+import informe_funciones
 
 # 3.9
 
@@ -27,8 +26,12 @@ def costo_camion(nombre_archivo = '../Data/camion.csv'):
     >>> costo_camion('../Data/camion_blancos.csv')
     47671.15
   """
-  camion = informe_funciones.leer_camion(nombre_archivo)
-  return sum([
-    producto['cajones'] * producto['precio']
-    for producto in camion
-  ])
+  try:
+    camion = informe_funciones.leer_camion(nombre_archivo)
+    return float(sum([
+      producto['cajones'] * producto['precio']
+      for producto in camion
+    ]))
+  except FileNotFoundError:
+    print(f'No existe el archivo o carpeta "{nombre_archivo}".')
+    return 0.0

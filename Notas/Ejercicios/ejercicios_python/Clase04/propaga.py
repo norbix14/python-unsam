@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # propaga.py
-
-######################################################################
 """
 @author: Norberto Fabrizio
 """
@@ -16,13 +15,11 @@ def invertir_lista(lista = []):
     `lista` (list): lista de elementos.
 
   Ejemplo:
-    >>> lista1 = [1,2,3,4,5]
-    >>> lista2 = ['Bogotá', 'Rosario', 'Santiago', 'San Fernando', 'San Miguel']
-    >>> print(invertir_lista(lista1))
+    >>> invertir_lista([1, 2, 3, 4, 5])
     [5,4,3,2,1]
-    >>> print(invertir_lista(lista2))
+    >>> invertir_lista(['Bogotá', 'Rosario', 'Santiago', 'San Fernando', 'San Miguel'])
     ['San Miguel', 'San Fernando', 'Santiago', 'Rosario', 'Bogotá']
-    >>> print(invertir_lista([]))
+    >>> invertir_lista([])
     []
   """
   if (type(lista) is list):
@@ -30,7 +27,7 @@ def invertir_lista(lista = []):
       return []
     invertida = []
     i = len(lista) - 1
-    for e in lista:
+    for _ in lista:
       invertida.append(lista[i])
       i -= 1
     return invertida
@@ -44,11 +41,9 @@ def propagar(vector = []):
     `vector` (list): vector de elementos.
 
   Ejemplo:
-    >>> vector1 = [0, 0, 0, -1, 1, 0, 0, 0, -1, 0, 1, 0, 0]
-    >>> vector2 = [0, 0, 0, 1, 0, 0]
-    >>> print(propagar(vector1))
+    >>> propagar([0, 0, 0, -1, 1, 0, 0, 0, -1, 0, 1, 0, 0])
     [0, 0, 0, -1, 1, 1, 1, 1, -1, 1, 1, 1, 1]
-    >>> print(propagar(vector2))
+    >>> propagar([0, 0, 0, 1, 0, 0])
     [1, 1, 1, 1, 1, 1]
   """
   if (type(vector) is list):
@@ -77,8 +72,9 @@ def propagar(vector = []):
     return invertir_lista(copia)
   return vector
 
-#%% test
-if __name__ == '__main__':
+#%%
+def main():
+  """Main. Ejecutar algunas pruebas."""
   # ejemplos clase
   vector1 = [0, 0, 0, -1, 1, 0, 0, 0, -1, 0, 1, 0, 0]
   vector2 = [0, 0, 0, 1, 0, 0]
@@ -96,3 +92,7 @@ if __name__ == '__main__':
   print()
   print('ORIGINAL ', vector4)
   print('PROPAGADO', propagar(vector4))
+
+#%%
+if __name__ == '__main__':
+  main()

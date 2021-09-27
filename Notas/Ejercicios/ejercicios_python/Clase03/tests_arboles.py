@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # tests_arboles.py
+"""
+@author: Norberto Fabrizio
+"""
 
 from pprint import pprint
 
 import arboles
-
-######################################################################
-"""
-@author: Norberto Fabrizio
-"""
 
 #%% definicion de tests
 def test_3_18(parque, lista_arboles = [], listainterna = False):
@@ -43,9 +42,8 @@ def test_3_20(parque, lista_arboles = [], listainterna = False):
   if listainterna:
     nombre_archivo = '../Data/arbolado-en-espacios-verdes.csv'
     lista_arboles = arboles.leer_parque(nombre_archivo, parque)
-  ejemplares = arboles.contar_ejemplares(lista_arboles)
   print(f'Los 5 ejemplares mas comunes en <{parque}>')
-  pprint(ejemplares.most_common(5))
+  pprint(arboles.contar_ejemplares(lista_arboles).most_common(5))
 
 def test_3_21(parque, especie, lista_arboles = [], listainterna = False):
   """Alturas de una especie en una lista.
@@ -70,9 +68,8 @@ def test_3_22(parque, especie, lista_arboles = [], listainterna = False):
   if listainterna:
     nombre_archivo = '../Data/arbolado-en-espacios-verdes.csv'
     lista_arboles = arboles.leer_parque(nombre_archivo, parque)
-  inclinaciones = arboles.obtener_inclinaciones(lista_arboles, especie)
   print(f'Inclinaciones de <{especie}> en <{parque}>')
-  pprint(inclinaciones)
+  pprint(arboles.obtener_inclinaciones(lista_arboles, especie))
 
 def test_3_23(parque, lista_arboles = [], listainterna = False):
   """Especie con el ejemplar mas inclinado.
@@ -83,14 +80,8 @@ def test_3_23(parque, lista_arboles = [], listainterna = False):
   if listainterna:
     nombre_archivo = '../Data/arbolado-en-espacios-verdes.csv'
     lista_arboles = arboles.leer_parque(nombre_archivo, parque)
-  especies_unicas = arboles.especies(lista_arboles)
-  lista_inclinaciones = []
-  for especie in especies_unicas:
-    max_inc = max(arboles.obtener_inclinaciones(lista_arboles, especie))
-    lista_inclinaciones.append((max_inc, especie))
-  emi = arboles.especimen_mas_inclinado(lista_inclinaciones)
   print(f'Ejemplar mas inclinado en <{parque}>')
-  pprint(emi)
+  pprint(arboles.especimen_mas_inclinado(lista_arboles))
 
 def test_3_24(parque, lista_arboles = [], listainterna = False):
   """Especie mas inclinada en promedio.
@@ -101,18 +92,11 @@ def test_3_24(parque, lista_arboles = [], listainterna = False):
   if listainterna:
     nombre_archivo = '../Data/arbolado-en-espacios-verdes.csv'
     lista_arboles = arboles.leer_parque(nombre_archivo, parque)
-  especies_unicas = arboles.especies(lista_arboles)
-  lista_inclinaciones = []
-  for especie in especies_unicas:
-    inclinaciones = arboles.obtener_inclinaciones(lista_arboles, especie)
-    promedio = sum(inclinaciones) / len(inclinaciones)
-    lista_inclinaciones.append((promedio, especie))
-  epmi = arboles.especie_promedio_mas_inclinada(lista_inclinaciones)
   print(f'Ejemplar que en promedio tiene mayor inclinacion en <{parque}>')
-  pprint(epmi)
+  pprint(arboles.especie_promedio_mas_inclinada(lista_arboles))
 
-#%% 
-if __name__ == '__main__':
+#%%
+def main():
   #%% ejecutar todos los tests
   nombre_archivo = '../Data/arbolado-en-espacios-verdes.csv'
   parques = ['general paz', 'andes, los', 'centenario']
@@ -135,3 +119,7 @@ if __name__ == '__main__':
   #test_3_22(parques[0], 'Jacarandá', listainterna = True)
   #test_3_23(parques[0], listainterna = True)
   #test_3_24(parques[0], listainterna = True)
+
+#%% 
+if __name__ == '__main__':
+  main()

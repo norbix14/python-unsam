@@ -1,14 +1,11 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # hipoteca.py
-
-######################################################################
 """
 @author: Norberto Fabrizio
 """
 
-#%%
-# 1.10
-
+#%% 1.10 - 
 def hipoteca(saldo, tasa, mensual):
   """Mostrar una tabla informativa con datos de la hipoteca.
 
@@ -77,9 +74,8 @@ def hipoteca(saldo, tasa, mensual):
   print(f'Meses adelantados: {meses_adelantados}')
 
 #%%
-saldo = 500000.0
-tasa = 0.05
-mensual = 2684.11
-
-#%%
-hipoteca(saldo, tasa, mensual)
+if __name__ == '__main__':
+  saldo = 500000.0
+  tasa = 0.05
+  mensual = 2684.11
+  hipoteca(saldo, tasa, mensual)

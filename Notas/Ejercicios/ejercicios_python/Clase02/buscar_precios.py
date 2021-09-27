@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # buscar_precios.py
-
-######################################################################
 """
 @author: Norberto Fabrizio
 """
@@ -17,13 +16,12 @@ def buscar_precio(nombre_archivo, producto):
     `producto` (str): producto a buscar en la lista.
 
   Ejemplo:
-    >>> naranja = buscar_precio('../Data/precios.csv', 'naranja')
-    >>> print(naranja)
+    >>> buscar_precio('../Data/precios.csv', 'naranja')
     'El cajon de naranja cuesta $106.28'
   """
-  resultado = ''
   try:
-    with open(nombre_archivo, 'rt') as archivo:
+    resultado = ''
+    with open(nombre_archivo, 'rt', encoding='UTF-8') as archivo:
       for linea in archivo:
         fila = linea.split(',')
         nombre = fila[0]
@@ -37,8 +35,7 @@ def buscar_precio(nombre_archivo, producto):
   except FileNotFoundError:
     return 'No existe el archivo o carpeta'
 
-#%% buscar producto
-naranja = buscar_precio('../Data/precios.csv', 'naranja')
-
-#%% imprimir resultado
-print(naranja)
+#%%
+if __name__ == '__main__':
+  naranja = buscar_precio('../Data/precios.csv', 'naranja')
+  print(naranja)

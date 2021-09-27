@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # bbin.py
-
-######################################################################
 """
 @author: Norberto Fabrizio
 """
@@ -29,7 +28,6 @@ def algoritmo_cuadratico(lista, m):
   print(f'Longitud de la lista: {n}')
   print(f'Cantidad de comparaciones: {comps}')
   print(f'Complejidad O({n}^2) = {n**2}')
-  return None
 
 #%% 6.13 
 def busqueda_binaria(lista, x, verbose = False):
@@ -186,8 +184,7 @@ def listar_secuencias(n = 4, verbose = False):
 
   Parametros:
     `n` (int): longitud.
-    `verbose` (bool): si es True, muestra cuantas comparaciones
-    se realizaron.
+    `verbose` (bool): si es True, muestra cuantas comparaciones se realizaron.
 
   Ejemplo:
     >>> from pprint import pprint

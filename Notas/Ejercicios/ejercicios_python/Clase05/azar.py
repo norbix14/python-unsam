@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # azar.py
 
 import random
-from pprint import pprint
-
-######################################################################
 
 # 5.3 - Cocumpleaños
 
@@ -24,7 +22,11 @@ def cumple():
   return birthday
 
 #%%
-if __name__ == '__main__':
-  n = 10000
+def main():
+  #n = 10000
   c = cumple()
   print(c)
+
+#%%
+if __name__ == '__main__':
+  main()

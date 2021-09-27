@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # busqueda_en_listas.py
-
-######################################################################
 """
 @author: Norberto Fabrizio
 """
@@ -9,6 +8,7 @@
 # 4.2 - Listas y busqueda lineal
 
 #%% Clase04_4.3 - busquedas de un elemento
+#
 def buscar_u_elemento(lista = [], elemento = 0):
   """Buscar un elemento en la lista.
 
@@ -20,11 +20,13 @@ def buscar_u_elemento(lista = [], elemento = 0):
     `elemento` (any): elemento a buscar.
 
   Ejemplo:
-    >>> lista = [1,2,3,2,3,4]
-    >>> print(buscar_u_elemento(lista, 1))
+    >>> lista = [1, 2, 3, 2, 3, 4]
+    >>> buscar_u_elemento(lista, 1)
     0
-    >>> print(buscar_u_elemento(lista, 5))
+    >>> buscar_u_elemento(lista, 5)
     -1
+    >>> buscar_u_elemento(lista, 3)
+    4
   """
   pos = -1
   if(type(lista) is list):
@@ -33,9 +35,8 @@ def buscar_u_elemento(lista = [], elemento = 0):
     for i, item in enumerate(lista):
       if (item == elemento):
         pos = i
-        break
   return pos
-
+#
 def buscar_n_elemento(lista = [], elemento = 0):
   """Buscar un elemento en la lista.
 
@@ -46,22 +47,23 @@ def buscar_n_elemento(lista = [], elemento = 0):
     `elemento` (any): elemento a buscar.
 
   Ejemplo:
-    >>> lista = [1,2,3,2,3,4]
-    >>> print(buscar_n_elemento(lista, 2))
+    >>> lista = [1, 2, 3, 2, 3, 4]
+    >>> buscar_n_elemento(lista, 2)
     2
-    >>> print(buscar_n_elemento(lista, 5))
+    >>> buscar_n_elemento(lista, 5)
     0
   """
   veces = 0
   if(type(lista) is list):
     if len(lista) <= 0:
       return veces
-    for i, item in enumerate(lista):
+    for item in lista:
       if (item == elemento):
         veces += 1
   return veces
 
 #%% Clase04_4.4 - busqueda de maximo y minimo
+#
 def maximo(lista = []):
   """Devuelve el maximo de la lista.
 
@@ -71,8 +73,8 @@ def maximo(lista = []):
     `lista` (list): lista de elementos.
 
   Ejemplo:
-    >>> lista = [10,2,70,5,10,84,20,30,33,50]
-    >>> print(maximo(lista))
+    >>> lista = [10, 2, 70, 5, 10, 84, 20, 30, 33, 50]
+    >>> maximo(lista)
     84
   """
   if (type(lista) is list):
@@ -84,7 +86,7 @@ def maximo(lista = []):
         m = i
     return m
   return lista
-
+#
 def minimo(lista = []):
   """Devuelve el minimo de la lista.
 
@@ -94,8 +96,8 @@ def minimo(lista = []):
     `lista` (list): lista de elementos.
 
   Ejemplo:
-    >>> lista = [10,2,70,5,10,84,20,30,33,50]
-    >>> print(minimo(lista))
+    >>> lista = [10, 2, 70, 5, 10, 84, 20, 30, 33, 50]
+    >>> minimo(lista)
     2
   """
   if (type(lista) is list):
@@ -119,7 +121,7 @@ def busqueda_lineal_lordenada(lista, e):
     `e` (any): elemento a buscar dentro de la lista.
 
   Ejemplo:
-    >>> lista = [12,33,2,4,5,432,14,15,8,7,9,233,44]
+    >>> lista = [12, 33, 2, 4, 5, 432, 14, 15, 8, 7, 9, 233, 44]
     >>> busqueda_lineal_lordenada(lista, 13)
     -1
     >>> busqueda_lineal_lordenada(lista, 12)

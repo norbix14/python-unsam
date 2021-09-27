@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # plot_bbin_vs_bsec.py
-
-import random
-import matplotlib.pyplot as plt
-import numpy as np
-
-######################################################################
 """
 @author: Norberto Fabrizio
 """
+
+import random
+
+import matplotlib.pyplot as plt
+
+import numpy as np
 
 # 6.7 - Graficos de complejidad
 
@@ -140,7 +141,7 @@ def experimento_secuencial_promedio(lista, m, k):
     99.625
   """
   comps_tot = 0
-  for i in range(k):
+  for _ in range(k):
     x = generar_elemento(m)
     comps_tot += busqueda_secuencial_(lista, x)[1]
   comps_prom = comps_tot / k
@@ -166,7 +167,6 @@ def graficar_experimentos_promedios():
   plt.title('Complejidad de la busqueda')
   plt.legend()
   plt.show()
-  return None
 
 #%% 6.20 - busqueda binaria vs busqueda secuencial
 #
@@ -187,7 +187,7 @@ def experimento_binario_promedio(lista, m, k):
     6.677
   """
   comps_tot = 0
-  for i in range(k):
+  for _ in range(k):
     x = generar_elemento(m)
     comps_tot += busqueda_binaria(lista, x)[1]
   comps_prom = comps_tot / k
@@ -221,4 +221,3 @@ def graficar_bbin_vs_bseq(m = 10000, k = 1000):
   plt.title('Complejidad de la busqueda')
   plt.legend()
   plt.show()
-  return None

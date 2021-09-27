@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # plotear_temperaturas.py
-
-import numpy as np
-import matplotlib.pyplot as plt
-
-######################################################################
 """
 @author: Norberto Fabrizio
 """
+
+import numpy as np
+
+import matplotlib.pyplot as plt
 
 # 5.9 - Empezando a plotear.
 

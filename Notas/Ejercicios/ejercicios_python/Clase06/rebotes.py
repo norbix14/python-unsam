@@ -1,14 +1,11 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # rebotes.py
-
-######################################################################
 """
 @author: Norberto Fabrizio
 """
 
-#%%
-# Clase01_1.5
-
+#%% Clase01_1.5
 def rebotes(altura):
 	"""Mostrar la altura alcanzada de los primeros 10 rebotes.
 
@@ -39,4 +36,5 @@ def rebotes(altura):
 		print(i, round(rebote, 4))
 
 #%%
-rebotes(100)
+if __name__ == '__main__':
+	rebotes(100)

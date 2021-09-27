@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # informe_funciones.py
+"""
+@author: Norberto Fabrizio
+"""
 
 from fileparse import parse_csv
-
-######################################################################
 
 # 6.2 - Scripting
 
@@ -17,13 +19,8 @@ def leer_camion(nombre_archivo = '../Data/camion.csv'):
     `nombre_archivo` (str): ruta del archivo csv.
 
   Ejemplo:
-    >>> from pprint import pprint
-    >>> camion = leer_camion('../Data/camion.csv')
-    >>> pprint(camion)
-    # se muestran algunos elementos a modo de ejemplo
-    [{'nombre': 'Lima', 'cajones': 100, 'precio': 32.2},
-     {'nombre': 'Naranja', 'cajones': 50, 'precio': 91.1},
-     {'nombre': 'Caqui', 'cajones': 150, 'precio': 103.44}]
+    >>> leer_camion('../Data/camion.csv')[:1]
+    [{'nombre': 'Lima', 'cajones': 100, 'precio': 32.2}]
   """
   return parse_csv(nombre_archivo, types=[str, int, float])
 
@@ -35,13 +32,8 @@ def leer_precios(nombre_archivo = '../Data/precios.csv'):
     `nombre_archivo` (str): ruta del archivo csv.
 
   Ejemplo:
-    >>> from pprint import pprint
-    >>> precios = leer_precios('../Data/precios.csv')
-    >>> pprint(precios)
-    # se muestran algunos elementos a modo de ejemplo
-    [('Acelga', 29.26),
-     ('Ajo', 15.19,)
-     ('Batata', 55.16)]
+    >>> leer_precios('../Data/precios.csv')[:1]
+    [('Acelga', 29.26)]
   """
   return parse_csv(nombre_archivo, types=[str, float], has_headers=False)
 
@@ -54,26 +46,25 @@ def hacer_informe(camion = [], precios = []):
     `precios` (list): precio de venta de la carga del camion.
 
   Ejemplo:
-    >>> from pprint import pprint
     >>> camion = leer_camion('../Data/camion.csv')
     >>> precios = leer_precios('../Data/precios.csv')
-    >>> pprint(hacer_informe(camion, precios))
-    # se muestran algunos elementos a modo de ejemplo
-    [('Lima', 100, 32.2, 8.019999999999996),
-     ('Naranja', 50, 91.1, 15.180000000000007),
-     ('Caqui', 150, 103.44, 2.019999999999996)]
+    >>> hacer_informe(camion, precios)[:1]
+    [('Lima', 100, 32.2, 8.019999999999996)]
   """
   inventario = []
   for producto in camion:
-    cambio = 0.0
-    nombre = producto['nombre']
-    cajones = producto['cajones']
-    precio = producto['precio']
-    for producto, precio_venta in precios:
-      if (producto == nombre):
-        cambio = precio_venta - precio
-    tupla = (nombre, cajones, precio, cambio)
-    inventario.append(tupla)
+    try:
+      cambio = 0.0
+      nombre = producto['nombre']
+      cajones = producto['cajones']
+      precio = producto['precio']
+      for producto, precio_venta in precios:
+        if (producto == nombre):
+          cambio = precio_venta - precio
+      tupla = (nombre, cajones, precio, cambio)
+      inventario.append(tupla)
+    except:
+      pass
   return inventario
 
 #%% 6.4 - imprimir la tabla con el informe
@@ -88,16 +79,7 @@ def imprimir_informe(informe = []):
     >>> precios = leer_precios('../Data/precios.csv')
     >>> informe = hacer_informe(camion, precios)
     >>> imprimir_informe(informe)
-    # 
-        Nombre    Cajones     Precio     Cambio
-    ---------- ---------- ---------- ---------- 
-          Lima        100      32.20       8.02
-       Naranja         50      91.10      15.18
-         Caqui        150     103.44       2.02
-     Mandarina        200      51.23      29.66
-       Durazno         95      40.37      33.11
-     Mandarina         50      65.10      15.79
-       Naranja        100      70.44      35.84
+    # imprime un cuadro formateado
   """
   cabeceras = ('Nombre', 'Cajones', 'Precio', 'Cambio')
   encabezado = f'%10s %10s %10s %10s' % cabeceras
@@ -107,7 +89,6 @@ def imprimir_informe(informe = []):
   for dato in informe:
     print('%10s %10d %10.2f %10.2f' % dato)
   print()
-  return None
 
 #%% 6.5 - crear funcion de alto nivel
 def informe_camion(nombre_archivo_camion = '../Data/camion.csv', nombre_archivo_precios = '../Data/precios.csv'):
@@ -121,19 +102,10 @@ def informe_camion(nombre_archivo_camion = '../Data/camion.csv', nombre_archivo_
 
   Ejemplo:
     >>> informe_camion('../Data/camion.csv', '../Data/precios.csv')
-    # 
-        Nombre    Cajones     Precio     Cambio
-    ---------- ---------- ---------- ---------- 
-          Lima        100      32.20       8.02
-       Naranja         50      91.10      15.18
-         Caqui        150     103.44       2.02
-     Mandarina        200      51.23      29.66
-       Durazno         95      40.37      33.11
-     Mandarina         50      65.10      15.79
-       Naranja        100      70.44      35.84
+    # llama a la funcion imprimir_informe(informe)
+    # muestra el cuadro formateado
   """
   camion = leer_camion(nombre_archivo_camion)
   precios = leer_precios(nombre_archivo_precios)
   datos_informe = hacer_informe(camion, precios)
   imprimir_informe(datos_informe)
-  return None

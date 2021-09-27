@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # generala.py
-
-import random
-
-######################################################################
 """
 @author: Norberto Fabrizio
 """
+
+import random
 
 # 5.2 - Random
 
@@ -40,7 +39,7 @@ def tirar(n = 5):
     `n` (int): cantidad de valores a generar.
 
   Ejemplo:
-    >>> print(tirar())
+    >>> tirar()
     [1, 5, 2, 4, 3]
   """
   n = int(n)
@@ -60,11 +59,11 @@ def es_generala(tirada = []):
     `tirada` (list): lista a verificar.
 
   Ejemplo:
-    >>> print(es_generala([1,1,1,1,1]))
+    >>> es_generala([1, 1, 1, 1, 1])
     True
-    >>> print(es_generala([1,2,1,4,4]))
+    >>> es_generala([1, 2, 1, 4, 4])
     False
-    >>> print(es_generala(111))
+    >>> es_generala(111)
     False
   """
   if ((type(tirada) is not list) or (len(tirada) <= 0)):
@@ -73,16 +72,15 @@ def es_generala(tirada = []):
 
 #%% 5.2 - probabilidad generala servida
 def prob_generala(n = 100):
-  """Estimar la probabilidad de generala servida en una mano
-  de 3 tiradas.
+  """Estimar la probabilidad de generala servida en una mano de 3 tiradas.
 
   Parametros:
     `n` (int): cantidad de simulaciones.
 
   Ejemplo:
-    >>> print(prob_generala(10000))
+    >>> prob_generala(10000)
     0.0026
-    >>> print(prob_generala('10000'))
+    >>> prob_generala('10000')
     0.0026
   """
   if (type(n) is str):

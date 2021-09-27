@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # camion_commandline.py
-
-import csv, sys
-
-######################################################################
 """
 @author: Norberto Fabrizio
 """
+
+import sys
+
+import csv
 
 # 2.10
 
@@ -27,22 +28,16 @@ def costo_camion():
 
     >>> py camion_commandline.py '../Data/camion2.csv'
     19908.75
-
-    >>> py camion_commandline.py '../Data/missing.csv'
-    30381.15
-
-    >>> py camion_commandline.py '../Data/camioneta.csv'
-    'No existe el archivo o carpeta'
   """
-  nombre_archivo = '../Data/camion.csv'
-  costo_total = 0.0
-  args = sys.argv[1:]
-  if (len(args) > 0):
-    nombre_archivo = args[0]
   try:
-    with open(nombre_archivo, 'rt') as archivo:
+    args = sys.argv
+    nombre_archivo = '../Data/camion.csv'
+    costo_total = 0.0
+    if (len(args) > 1):
+      nombre_archivo = args[1]
+    with open(nombre_archivo, 'rt', encoding='UTF-8') as archivo:
       filas = csv.reader(archivo)
-      next(filas) # headers
+      next(filas)
       for fila in filas:
         try:
           cajones = int(fila[1])
@@ -52,7 +47,9 @@ def costo_camion():
           print(f'Error: {e}')
     return costo_total
   except FileNotFoundError:
-    return 'No existe el archivo o carpeta'
+    print(f'No existe el archivo o carpeta "{nombre_archivo}".')
+    return 0.0
 
-#%% ver costo del camion
-print(costo_camion())
+#%%
+if __name__ == '__main__':
+  print(costo_camion())

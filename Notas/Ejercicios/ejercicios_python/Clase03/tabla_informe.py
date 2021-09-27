@@ -1,16 +1,44 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # tabla_informe.py
-
-import csv
-
-######################################################################
 """
 @author: Norberto Fabrizio
 """
 
+import csv
+
 # 3.13
 
-#%% funcion leer_camion(nombre_archivo)
+#%% funcion costo_camion - 
+def costo_camion(nombre_archivo):
+  """Calcular el costo total pagado por los cajones.
+
+  Parametros:
+    `nombre_archivo` (str): ruta del archivo csv.
+
+  Ejemplo:
+    >>> costo_camion('../Data/camion.csv')
+    47671.15
+  """
+  try:
+    costo_total = 0.0
+    with open(nombre_archivo, 'rt', encoding='UTF-8') as archivo:
+      filas = csv.reader(archivo)
+      encabezados = next(filas)
+      for n_fila, fila in enumerate(filas):
+        record = dict(zip(encabezados, fila))
+        try:
+          cajones = int(record['cajones'])
+          precio = float(record['precio'])
+          costo_total += cajones * precio
+        except ValueError:
+          print(f'Fila {n_fila}: No puede interpretar {fila}')
+    return costo_total
+  except FileNotFoundError:
+    print(f'No existe el archivo o carpeta "{nombre_archivo}".')
+    return 0.0
+
+#%% funcion leer_camion - 
 def leer_camion(nombre_archivo):
   """Mostrar el precio de costo de los cajones en el camion.
 
@@ -18,29 +46,28 @@ def leer_camion(nombre_archivo):
     `nombre_archivo` (str): ruta del archivo csv.
 
   Ejemplo:
-    >>> from pprint import pprint
-    >>> camion = leer_camion('../Data/camion.csv')
-    >>> pprint(camion)
-    # se muestran algunos elementos a modo de ejemplo
-    [{'nombre': 'Lima', 'cajones': 100, 'precio': 32.2},
-     {'nombre': 'Naranja', 'cajones': 50, 'precio': 91.1},
-     {'nombre': 'Caqui', 'cajones': 150, 'precio': 103.44},
-     {'nombre': 'Mandarina', 'cajones': 200, 'precio': 51.23},
-     {'nombre': 'Durazno', 'cajones': 95, 'precio': 40.37}]
+    >>> leer_camion('../Data/camion.csv')[:1]
+    [{'nombre': 'Lima', 'cajones': 100, 'precio': 32.2}]
   """
   try:
     camion = []
-    with open(nombre_archivo, 'rt') as archivo:
+    with open(nombre_archivo, 'rt', encoding='UTF-8') as archivo:
       filas = csv.reader(archivo)
       encabezados = next(filas)
-      for i, fila in enumerate(filas, start = 0):
-        lote = dict(zip(encabezados, fila))
-        camion.append(lote)
+      for fila in filas:
+        try:
+          lote = dict(zip(encabezados, fila))
+          lote['cajones'] = int(lote['cajones'])
+          lote['precio'] = float(lote['precio'])
+          camion.append(lote)
+        except:
+          pass
     return camion
   except FileNotFoundError:
-    return 'No existe el archivo o carpeta'
+    print(f'No existe el archivo o carpeta "{nombre_archivo}".')
+    return []
 
-#%% funcion leer_precios(nombre_archivo)
+#%% funcion leer_precios - 
 def leer_precios(nombre_archivo):
   """Mostrar el precio de venta de los cajones en el negocio.
 
@@ -48,25 +75,14 @@ def leer_precios(nombre_archivo):
     `nombre_archivo` (str): ruta del archivo csv.
 
   Ejemplo:
-    >>> from pprint import pprint
-    >>> precios = leer_precios('../Data/precios.csv')
-    >>> pprint(precios)
+    >>> leer_precios('../Data/precios.csv')
     # se muestran algunos elementos a modo de ejemplo
-    {'Acelga': 29.26,
-     'Ajo': 15.19,
-     'Batata': 55.16,
-     'Berenjena': 28.47,
-     'Bruselas': 15.72,
-     'Caqui': 105.46,
-     'Cebolla': 58.99,
-     'Cebollín': 57.1,
-     'Cereza': 11.27,
-     'Ciruela': 44.85}
+    {'Acelga': 29.26, 'Ajo': 15.19}
   """
   try:
     diccionario = {}
     errores = 0
-    with open(nombre_archivo, 'rt') as archivo:
+    with open(nombre_archivo, 'rt', encoding='UTF-8') as archivo:
       filas = csv.reader(archivo)
       cabeceras = ['nombre', 'precio']
       for fila in filas:
@@ -75,15 +91,12 @@ def leer_precios(nombre_archivo):
           nombre = producto['nombre']
           precio = float(producto['precio'])
           diccionario[nombre] = precio
-        except ValueError:
-          errores += 1
-        except IndexError:
-          errores += 1
-        except KeyError:
+        except:
           errores += 1
     return diccionario
   except FileNotFoundError:
-    return 'No existe el archivo o carpeta'
+    print(f'No existe el archivo o carpeta "{nombre_archivo}".')
+    return {}
 
 #%% funcion hacer_informe(camion, precios)
 def hacer_informe(camion = [], precios = {}):
@@ -94,58 +107,59 @@ def hacer_informe(camion = [], precios = {}):
     `precios` (dict): precio de venta de la carga del camion.
 
   Ejemplo:
-    >>> from pprint import pprint
     >>> camion = leer_camion('../Data/camion.csv')
     >>> precios = leer_precios('../Data/precios.csv')
-    >>> informe = hacer_informe(camion, precios)
-    >>> pprint(informe)
-    [('Lima', 100, 32.2, 8.019999999999996),
-     ('Naranja', 50, 91.1, 15.180000000000007),
-     ('Caqui', 150, 103.44, 2.019999999999996),
-     ('Mandarina', 200, 51.23, 29.660000000000004),
-     ('Durazno', 95, 40.37, 33.11000000000001),
-     ('Mandarina', 50, 65.1, 15.790000000000006),
-     ('Naranja', 100, 70.44, 35.84)]
+    >>> hacer_informe(camion, precios)[:1]
+    [('Lima', 100, 32.2, 8.019999999999996)]
   """
   inventario = []
   for producto in camion:
-    cambio = 0.0
-    nombre = producto['nombre']
-    cajones = int(producto['cajones'])
-    precio = float(producto['precio'])
-    cambio = precios[nombre] - precio
-    tupla = (nombre, cajones, precio, cambio)
-    inventario.append(tupla)
+    try:
+      cambio = 0.0
+      nombre = producto['nombre']
+      cajones = producto['cajones']
+      precio = producto['precio']
+      cambio = precios[nombre] - precio
+      tupla = (nombre, cajones, precio, cambio)
+      inventario.append(tupla)
+    except:
+      pass
   return inventario
 
 #%% funcion tabla_con_formato(informe)
 def tabla_con_formato(informe = []):
-  """Toma una lista y muestra una salida bien formateada.
+  """Tomar una lista y mostrar una tabla bien formateada por pantalla.
 
   Parametros:
     `informe` (list): lista a iterar.
   """
-  sep = '-'
-  col1, col2, col3, col4 = ('Nombre', 'Cajones', 'Precio', 'Cambio')
-  encabezado = f'{col1:>10s} {col2:>10s} {col3:>10s} {col4:>10s}'
-  separador = f'{sep:->10s} {sep:->10s} {sep:->10s} {sep:->10s}'
+  cabeceras = ('Nombre', 'Cajones', 'Precio', 'Cambio')
+  encabezado = f'%10s %10s %10s %10s' % cabeceras
+  separador = ('-' * 10 + ' ') * len(cabeceras)
   print(encabezado)
   print(separador)
-  for nombre, cajones, precio, cambio in informe:
-    print(f'{nombre:>10s} {cajones:>10d} {precio:>10.2f} {cambio:>10.2f}')
+  for dato in informe:
+    print('%10s %10d %10.2f %10.2f' % dato)
+  print()
+
+#%%
+def tests():
+  camiones = [
+    'camion', 'camion2', 'camion_blancos',
+    'fecha_camion', 'missing', 'noexiste'
+  ]
+  precios = leer_precios('../Data/precios.csv')
+  for camion in camiones:
+    ruta = f'../Data/{camion}.csv'
+    c = leer_camion(ruta)
+    informe = hacer_informe(c, precios)
+    print(f'{ruta:-^43s}')
+    tabla_con_formato(informe)
+
+#%%
+def main():
+  tests()
 
 #%% 
 if __name__ == '__main__':
-  #%% archivos csv
-  nombre_archivo_camion = '../Data/camion.csv'
-  nombre_archivo_precios = '../Data/precios.csv'
-
-  #%% leer archivos
-  camion = leer_camion(nombre_archivo_camion)
-  precios = leer_precios(nombre_archivo_precios)
-
-  #%% hacer el informe
-  informe = hacer_informe(camion, precios)
-
-  #%% mostrar tabla bien formateada con el informe
-  tabla_con_formato(informe)
+  main()

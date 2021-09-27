@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # documentacion.py
-
-###############################################################################
+"""
+@author: Norberto Fabrizio
+"""
 
 # 7.5 - Contratos: especificacion y documentacion
 
@@ -95,7 +96,7 @@ def suma_pares(l):
     `l` (list): listado de enteros positivos.
 
   Ejemplo:
-    >>> suma_pares([1,2,3,4,5,6,7,8,9])
+    >>> suma_pares([1, 2, 3, 4, 5, 6, 7, 8, 9])
     20
 
   Ultima actualizacion: 17-09-21 16:16

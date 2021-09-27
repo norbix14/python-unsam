@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # envido.py
-
-import random
-
-######################################################################
 """
 @author: Norberto Fabrizio
 """
+
+import random
 
 # 5.4 - Envido
 
@@ -15,11 +14,10 @@ def envido():
   """Repartir 3 cartas unicas en el truco.
 
   Ejemplo:
-    >>> mano = envido()
-    >>> print(mano)
+    >>> envido()
     [(1, 'oro'), (2, 'copa'), (3, 'espada')]
   """
-  valores = [1,2,3,4,5,6,7,10,11,12]
+  valores = [1, 2, 3, 4, 5, 6, 7, 10, 11, 12]
   palos = ['oro','copa','espada','basto']
   baraja = [
     (valor, palo)
@@ -41,20 +39,19 @@ def prob_envido(n = 100, palo = 'oro', puntos = 31, verbose = False):
     `puntos` (int): puntos con los cuales realizar la simulacion.
 
   Ejemplo:
-    >>> from pprint import pprint
-    >>> print(prob_envido())
+    >>> prob_envido()
     # comportamiento por defecto
     0.03
-    >>> print(prob_envido(n=100, palo='espada', puntos=33))
+    >>> prob_envido(n=100, palo='espada', puntos=33)
     0.04
-    >>> pprint(prob_envido(verbose=True))
+    >>> prob_envido(verbose=True)
     # comportamiento con simulacion, palo y puntos predefinidos
     {'condicion': 'primera mano',
      'detalles': 'envido de oro de 31 puntos',
      'envido': 3,
      'probabilidad': 0.03,
      'simulaciones': 100}
-    >>> pprint(prob_envido(1000, 'copa', 32, verbose=True))
+    >>> prob_envido(1000, 'copa', 32, verbose=True)
     {'condicion': 'primera mano',
      'detalles': 'envido de copa de 32 puntos',
      'envido': 10,

@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # figuritas.py
-
-import random
-import numpy as np
-import matplotlib.pyplot as plt
-
-######################################################################
 """
 @author: Norberto Fabrizio
 """
+
+import random
+
+import numpy as np
+
+import matplotlib.pyplot as plt
 
 # 5.4 - El album de figuritas
 
@@ -20,10 +21,10 @@ def crear_album(figus_total = 6):
     `figus_total` (int): espacios para pegar las figuritas.
 
   Ejemplo:
-    >>> print(crear_album())
+    >>> crear_album()
     # por defecto, crea 6 espacios para pegar figuritas
     array([0, 0, 0, 0, 0, 0])
-    >>> print(crear_album(10))
+    >>> crear_album(10)
     array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
   """
   figus_total = int(figus_total)
@@ -38,9 +39,9 @@ def album_incompleto(album = []):
 
   Ejemplo:
     >>> album = crear_album()
-    >>> print(album_incompleto(album))
+    >>> album_incompleto(album)
     True
-    >>> print(album_incompleto([1,2,3,4,5,6]))
+    >>> album_incompleto([1, 2, 3, 4, 5, 6])
     False
   """
   if ((type(album) is np.ndarray) or (type(album) is list)):
@@ -55,11 +56,11 @@ def comprar_figu(figus_total = 670):
     `figus_total` (int): rango dentro del cual debe estar la figurita.
 
   Ejemplo:
-    >>> print(comprar_figu(0))
+    >>> comprar_figu(0)
     0
-    >>> print(comprar_figu(10))
+    >>> comprar_figu(10)
     8
-    >>> print(comprar_figu(670))
+    >>> comprar_figu(670)
     125
   """
   figus_total = int(figus_total)
@@ -75,9 +76,9 @@ def cuantas_figus(figus_total = 10):
     `figus_total` (int): espacios en el album para las figuritas.
 
   Ejemplo:
-    >>> print(cuantas_figus())
+    >>> cuantas_figus()
     18
-    >>> print(cuantas_figus(90))
+    >>> cuantas_figus(90)
     # para un album con 90 espacios, se necesitan 433 figuritas para llenarlo
     433
   """
@@ -110,13 +111,13 @@ def experimento_figus(n_repeticiones = 10, figus_total = 6):
     `figus_total` (int): cantidad de figuritas a llenar en cada album.
 
   Ejemplo:
-    >>> print(experimento_figus())
+    >>> experimento_figus()
     14.6
-    >>> print(experimento_figus(100, 670))
+    >>> experimento_figus(100, 670)
     4803.93
-    >>> print(experimento_figus('10', '6'))
+    >>> experimento_figus('10', '6')
     13.7
-    >>> print(experimento_figus(n_repeticiones = 10, figus_total = 6))
+    >>> experimento_figus(n_repeticiones = 10, figus_total = 6)
     12.6
   """
   n_repeticiones = int(n_repeticiones)
@@ -136,11 +137,11 @@ def simular_generacion_paquete(espacios_album = 670, figus_total = 5):
     `figus_total` (int): cuantas figuritas generar en cada paquete.
 
   Ejemplo:
-    >>> print(simular_generacion_paquete())
+    >>> simular_generacion_paquete()
     [8, 343, 582, 66, 451]
-    >>> print(simular_generacion_paquete(100))
+    >>> simular_generacion_paquete(100)
     [70, 39, 81, 2, 1]
-    >>> print(simular_generacion_paquete('100'))
+    >>> simular_generacion_paquete('100')
     [69, 32, 85, 5, 49]
   """
   espacios_album = int(espacios_album)
@@ -159,11 +160,11 @@ def comprar_paquete(figus_total = 670, figus_paquete = 6):
     `figus_paquete` (int): cuantas figuritas debe tener cada paquete.
 
   Ejemplo:
-    >>> print(comprar_paquete(10))
+    >>> comprar_paquete(10)
     [1, 10, 1, 5, 4, 2]
-    >>> print(comprar_paquete(10, 10))
+    >>> comprar_paquete(10, 10)
     [4, 6, 6, 1, 9, 4, 6, 3, 6, 8]
-    >>> print(comprar_paquete(670, 5))
+    >>> comprar_paquete(670, 5)
     [294, 629, 250, 543, 176]
   """
   figus_total = int(figus_total)
@@ -182,15 +183,15 @@ def cuantos_paquetes(figus_total = 10, figus_paquete = 6):
     `figus_paquete` (int): cuantas figuritas debe tener cada paquete.
 
   Ejemplo:
-    >>> print(cuantos_paquetes())
+    >>> cuantos_paquetes()
     3
-    >>> print(cuantos_paquetes(100))
+    >>> cuantos_paquetes(100)
     86
-    >>> print(cuantos_paquetes(100, 5))
+    >>> cuantos_paquetes(100, 5)
     122
-    >>> print(cuantos_paquetes(670, 5))
+    >>> cuantos_paquetes(670, 5)
     816
-    >>> print(cuantos_paquetes(670, 6))
+    >>> cuantos_paquetes(670, 6)
     621
   """
   figus_total = int(figus_total)
@@ -213,13 +214,13 @@ def simular_cuantos_paquetes(n_repeticiones = 100):
     `n_repeticiones` (int): cuantas simulaciones realizar.
 
   Ejemplo:
-    >>> print(simulaciones())
+    >>> simulaciones()
     # en 100 simulaciones
     # se deben comprar, en promedio, 923.66 paquetes
     923.66
-    >>> print(simulaciones(100))
+    >>> simulaciones(100)
     962.44
-    >>> print(simulaciones(10))
+    >>> simulaciones(10)
     953.3
   """
   n_repeticiones = int(n_repeticiones)
@@ -294,5 +295,4 @@ def primera_simplificacion():
 
 
 #%% 5.24 - 
-
 

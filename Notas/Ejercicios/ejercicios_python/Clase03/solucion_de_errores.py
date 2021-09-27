@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # solucion_de_errores.py
-
-import csv
-from pprint import pprint
-
-######################################################################
 """
 @author: Norberto Fabrizio
 """
+
+import csv
+
+from pprint import pprint
 
 # 3
 
@@ -165,8 +165,8 @@ def leer_camion(nombre_archivo):
       camion.append(registro)
   return camion
 
-#%% 
-if __name__ == '__main__':
+#%%
+def main():
   #%% 3.2 - testear tiene_a()
   print('Tiene letra a:', tiene_a('UNSAM 2020'))
   print('Tiene letra a:', tiene_a('abracadabra'))
@@ -185,3 +185,7 @@ if __name__ == '__main__':
   #%% 3.5 - testear leer_camion()
   camion = leer_camion('../Data/camion.csv')
   pprint(camion)
+
+#%% 
+if __name__ == '__main__':
+  main()

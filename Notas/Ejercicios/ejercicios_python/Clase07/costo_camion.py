@@ -1,15 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # costo_camion.py
+"""
+@author: Norberto Fabrizio
+"""
 
 import sys
 
 import informe_final
-
-###############################################################################
-"""
-@author: Norberto Fabrizio
-"""
 
 # 3.9
 
@@ -21,17 +19,21 @@ def costo_camion(nombre_archivo):
     `nombre_archivo` (str): ruta al archivo csv.
 
   Ejemplo:
-    >>> print(costo_camion('../Data/camion.csv'))
+    >>> costo_camion('../Data/camion.csv')
     47671.15
 
-  Ultima actualizacion: 17-09-21 16:16
+  Ultima actualizacion: 27-09-21 16:30
   """
-  with open(nombre_archivo, 'rt', encoding='UTF-8') as archivo:
-    camion = informe_final.leer_camion(archivo)
-    return sum([
-      producto['cajones'] * producto['precio']
-      for producto in camion
-    ])
+  try:
+    with open(nombre_archivo, 'rt', encoding='UTF-8') as archivo:
+      camion = informe_final.leer_camion(archivo)
+      return float(sum([
+        producto['cajones'] * producto['precio']
+        for producto in camion
+      ]))
+  except FileNotFoundError:
+    print(f'No existe el archivo o carpeta "{nombre_archivo}".')
+    return 0.0
 
 #%% 7.4 - funcion principal
 def f_principal(parametros):
