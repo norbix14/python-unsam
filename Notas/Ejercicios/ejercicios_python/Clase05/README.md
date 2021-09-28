@@ -1,6 +1,6 @@
-# Cierre de la clase.
+# Cierre de la clase
 
-## Recopilar las soluciones de los siguientes ejercicios:
+## Recopilar las soluciones de los siguientes ejercicios
 
 1. El archivo `generala.py` del Ejercicio 5.2.
 2. El archivo `termometro.py` del Ejercicio 5.8.

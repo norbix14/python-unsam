@@ -1,6 +1,6 @@
-# Cierre de la clase.
+# Cierre de la clase
 
-## Recopilar las soluciones de los siguientes ejercicios:
+## Recopilar las soluciones de los siguientes ejercicios
 
 1. El archivo `fileparse.py` del Ejercicio 7.6.
 2. El archivo `informe_final.py` del Ejercicio 7.7.

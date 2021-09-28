@@ -1,6 +1,6 @@
-# Cierre de la clase.
+# Cierre de la clase
 
-## Recopilar las soluciones de los siguientes ejercicios:
+## Recopilar las soluciones de los siguientes ejercicios
 
 1. El archivo `buscar_precios.py` del Ejercicio 2.7.
 2. El archivo `costo_camion.py` del Ejercicio 2.9.

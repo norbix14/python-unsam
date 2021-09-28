@@ -1,6 +1,6 @@
-# Cierre de la clase.
+# Cierre de la clase
 
-## Recopilar las soluciones de los siguientes ejercicios:
+## Recopilar las soluciones de los siguientes ejercicios
 
 1. Ejercicio 1.5 - `rebotes.py`
 2. Ejercicio 1.11 - `hipoteca.py`

@@ -1,17 +1,17 @@
-# Indice hacia los ejercicios.
+# Clases
 
-* [1. Clase01](ejercicios_python/Clase01)
-* [2. Clase02](ejercicios_python/Clase02)
-* [3. Clase03](ejercicios_python/Clase03)
-* [4. Clase04](ejercicios_python/Clase04)
-* [5. Clase05](ejercicios_python/Clase05)
-* [6. Clase06](ejercicios_python/Clase06)
-* [7. Clase07](ejercicios_python/Clase07)
-* [8. Clase08](ejercicios_python/Clase08)
-* [9. Clase09](ejercicios_python/Clase09)
-* [10. Clase10](ejercicios_python/Clase10)
-* [11. Clase11](ejercicios_python/Clase11)
-* [12. Clase12](ejercicios_python/Clase12)
+* [Clase01 - Introducción](ejercicios_python/Clase01)
+* [Clase02 - Estructuras y funciones](ejercicios_python/Clase02)
+* [Clase03 - Trabajando con datos](ejercicios_python/Clase03)
+* [Clase04 - Algoritmos sobre listas y comprensión de listas](ejercicios_python/Clase04)
+* [Clase05 - Aleatoriedad](ejercicios_python/Clase05)
+* [Clase06 - Complejidad y organización de programas](ejercicios_python/Clase06)
+* [Clase07 - Diseño, especificación, documentación y estilo](ejercicios_python/Clase07)
+* [Clase08 - Fechas, carpetas y pandas](ejercicios_python/Clase08)
+* [Clase09 - Clases y objetos](ejercicios_python/Clase09)
+* [Clase10 - Generadores e iteradores](ejercicios_python/Clase10)
+* [Clase11 - Recursión y regresión](ejercicios_python/Clase11)
+* [Clase12 - Ordenamiento](ejercicios_python/Clase12)
 
 # Ejercicios atrasados
 
@@ -24,7 +24,7 @@ archivo no lo modificaste no hace falta que lo vuelvas a subir).
 Si querés podés re-entregar uno solo, o más archivos. No hace falta que vuelvas
 a subir archivos que ya enviaste.
 
-Entregarlos mediante este [formulario](https://sites.google.com/view/entregas-unsam-2021-c2/home)
+Entregarlos mediante [este formulario.](https://sites.google.com/view/entregas-unsam-2021-c2/home)
 
 # Re-entregas con versiones mejoradas u optimizadas
 

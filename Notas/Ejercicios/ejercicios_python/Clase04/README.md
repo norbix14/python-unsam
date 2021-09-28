@@ -1,6 +1,6 @@
-# Cierre de la clase.
+# Cierre de la clase
 
-## Recopilar las soluciones de los siguientes ejercicios:
+## Recopilar las soluciones de los siguientes ejercicios
 
 1. El archivo `busqueda_en_listas.py` del Ejercicio 4.3 y el Ejercicio 4.4.
 2. El archivo `invlista.py` del Ejercicio 4.5.
