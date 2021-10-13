@@ -33,11 +33,11 @@ class Cola:
     """Devolver `True` si la cola esta vacia, sino `False`."""
     return len(self.items) == 0
 #
-class TorreDeControl(Cola):
+class TorreDeControl():
   """Trabajos de una torre de control en un aeropuerto."""
   def __init__(self):
-    super().__init__()
     self.arribos = []
+    self.partidas = []
 
   def nueva_partida(self, vuelo):
     """Agregar un nuevo `vuelo`.
@@ -45,7 +45,7 @@ class TorreDeControl(Cola):
     Parametros:
       `vuelo` (str): vuelo en espera de partir.
     """
-    super().encolar(vuelo)
+    self.partidas.append(vuelo)
 
   def nuevo_arribo(self, vuelo):
     """Agregar un nuevo arribo el cual tiene prioridad.
@@ -65,21 +65,31 @@ class TorreDeControl(Cola):
       raise ValueError('La cola esta vacia.')
     return self.arribos.pop(0)
 
+  def partidas_vacias(self):
+    """Ver si hay partidas pendientes."""
+    return len(self.partidas) == 0
+
+  def vaciar_partidas(self):
+    """Vaciar las partidas en espera."""
+    if (self.partidas_vacias()):
+      raise ValueError('La cola esta vacia.')
+    return self.partidas.pop(0)
+
   def asignar_pista(self):
-    """Asignar la pista a un vuelo con prioridad."""
-    if self.arribos_vacios():
-      try:
-        hay_vuelo = super().desencolar()
+    """Asignar la pista a un vuelo con prioridad y luego a otros vuelos."""
+    try:
+      if self.arribos_vacios():
+        hay_vuelo = self.vaciar_partidas()
         print(f'El vuelo {hay_vuelo} despegó con éxito.')  
-      except ValueError:
+      else:
+        hay_vuelo = self.vaciar_arribos()
+        print(f'El vuelo {hay_vuelo} aterrizó con éxito.')
+    except ValueError:
         print('No hay vuelos en espera.')
-    else:
-      hay_vuelo = self.vaciar_arribos()
-      print(f'El vuelo {hay_vuelo} aterrizó con éxito.')
 
   def ver_estado(self):
     """Ver el estado general de los vuelos."""
     arribos = 'Ninguno' if self.arribos_vacios() else ', '.join(self.arribos)
-    despegues = 'Ninguno' if self.esta_vacia() else ', '.join(self.items)
+    despegues = 'Ninguno' if self.partidas_vacias() else ', '.join(self.partidas)
     print(f'Vuelos esperando para aterrizar: {arribos}')
     print(f'Vuelos esperando para despegar: {despegues}')

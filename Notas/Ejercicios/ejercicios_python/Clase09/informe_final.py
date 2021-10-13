@@ -17,8 +17,6 @@ from formato_tabla import crear_formateador
 # 9.2 - Clases
 # 9.3 - Herencia
 
-# 6.4 - estructurar programa
-
 #%% Clase03_3.13, Clase07_7.7, Clase09_9.4 - 
 def leer_camion(nombre_archivo):
   """Mostrar el precio de costo de los cajones en el camion.
@@ -119,8 +117,7 @@ def imprimir_informe(informe, formateador):
   """
   formateador.encabezado(['Nombre', 'Cajones', 'Precio', 'Cambio'])
   for nombre, cajones, precio, cambio in informe:
-    rowdata = [nombre, str(cajones), f'{precio:0.2f}', f'{cambio:0.2f}']
-    formateador.fila(rowdata)
+    formateador.fila([f'{nombre}', f'{cajones}', f'{precio:0.2f}', f'{cambio:0.2f}'])
 
 #%% Clase06_6.5, Clase09_9.5, Clase09_9.6 - 
 def informe_camion(nombre_archivo_camion, nombre_archivo_precios, formato = 'txt'):

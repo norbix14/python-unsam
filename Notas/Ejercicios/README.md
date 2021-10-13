@@ -28,32 +28,37 @@ Entregarlos mediante [este formulario.](https://sites.google.com/view/entregas-u
 
 # Re-entregas con versiones mejoradas u optimizadas
 
-### Clase02
+### Clase02 (entregado)
 
 * Archivo **[costo_camion.py](ejercicios_python/Clase02/costo_camion.py)**
 * Archivo **[camion_commandline.py](ejercicios_python/Clase02/camion_commandline.py)**
 * Archivo **[informe.py](ejercicios_python/Clase02/informe.py)**
 
-### Clase03
+### Clase03 (entregado)
 
 * Archivo **[arboles.py](ejercicios_python/Clase03/arboles.py)**
 * Archivo **[informe.py](ejercicios_python/Clase03/informe.py)**
 * Archivo **[tabla_informe.py](ejercicios_python/Clase03/tabla_informe.py)**
 
-### Clase04
+### Clase04 (entregado)
 
 * Archivo **[arboles.py](ejercicios_python/Clase04/arboles.py)**
 
-### Clase05
+### Clase05 (entregado)
 * Archivo **[arboles.py](ejercicios_python/Clase05/arboles.py)**
 
-### Clase06
+### Clase06 (entregado)
 
 * Archivo **[fileparse.py](ejercicios_python/Clase06/fileparse.py)**
 * Archivo **[informe_funciones.py](ejercicios_python/Clase06/informe_funciones.py)**
 * Archivo **[costo_camion.py](ejercicios_python/Clase06/costo_camion.py)**
 
-### Clase07
+### Clase07 (entregado)
 
 * Archivo **[informe_final.py](ejercicios_python/Clase07/informe_final.py)**
+
+### Clase09 (entregado)
+
+* Archivo **[canguros_buenos.py](ejercicios_python/Clase09/canguros_buenos.py)**
+* Archivo **[torre_control.py](ejercicios_python/Clase09/torre_control.py)**
 

@@ -10,7 +10,7 @@
 #%% 9.11 - canguros buenos y canguros malos
 class Canguro():
   """Un Canguro es un marsupial."""
-  def __init__(self, nombre, contenido=[]):
+  def __init__(self, nombre, contenido=None):
     """Inicializar los contenidos del marsupio.
 
     Parametros:
@@ -18,8 +18,10 @@ class Canguro():
       `contenido` (list): contenido inicial del marsupio.
     """
     self.nombre = nombre
-    # * SECCION CORREGIDA
-    self.contenido_marsupio = [] if len(contenido) <= 0 else contenido
+    # * SECCION CORREGIDA (tomada de la clase de consulta)
+    if contenido == None:
+      contenido = []
+    self.contenido_marsupio = contenido
 
   def __str__(self):
     """Devolver una representación como cadena de este Canguro."""
