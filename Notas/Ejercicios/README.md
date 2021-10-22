@@ -62,3 +62,7 @@ Entregarlos mediante [este formulario.](https://sites.google.com/view/entregas-u
 * Archivo **[canguros_buenos.py](ejercicios_python/Clase09/canguros_buenos.py)**
 * Archivo **[torre_control.py](ejercicios_python/Clase09/torre_control.py)**
 
+### Clase11
+* Archivo **[larenga.py](ejercicios_python/Clase11/larenga.py)**
+* Archivo **[alquiler.py](ejercicios_python/Clase11/alquiler.py)**
+
