@@ -8,7 +8,7 @@
 # 11.4 - Practica de recursion
 
 #%% 11.13 - 
-def hojas_iso(n = 0) -> tuple:
+def medidas_hoja_A(n = 0) -> tuple:
   """Calcular el ancho y el largo de una hoja `A(n)`.
   Se devolverá una tupla con las medidas del ancho y largo en milímetros.
 
@@ -16,24 +16,24 @@ def hojas_iso(n = 0) -> tuple:
     `n` (int): tamaño de hoja.
 
   Ejemplo:
-    >>> hojas_iso(0)
+    >>> medidas_hoja_A(0)
     (841, 1189)
-    >>> hojas_iso(1)
+    >>> medidas_hoja_A(1)
     (594, 841)
-    >>> hojas_iso(2)
+    >>> medidas_hoja_A(2)
     (420, 594)
-    >>> hojas_iso(3)
+    >>> medidas_hoja_A(3)
     (297, 420)
-    >>> hojas_iso(4)
+    >>> medidas_hoja_A(4)
     (210, 297)
-    >>> hojas_iso(10)
+    >>> medidas_hoja_A(10)
     (26, 37)
 
-  Última actualización: 22-10-2021 09:00
+  Última actualización: 22-10-2021 15:30
   """
   ancho_a0 = 841
   largo_a0 = 1189
   if n <= 0:
     return (ancho_a0, largo_a0)
-  a, l = hojas_iso(n - 1)
+  a, l = medidas_hoja_A(n - 1)
   return (l // 2, a)
